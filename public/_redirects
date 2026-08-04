@@ -1,0 +1,4 @@
+# SPA fallback. Routing is client-side, so /craft, /forge, /bazaar and /compact
+# are not files on disk — without this, a refresh or a shared deep link 404s on
+# Cloudflare Pages. 200 rather than 302 so the URL is preserved for the router.
+/*  /index.html  200

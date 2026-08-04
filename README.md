@@ -16,6 +16,18 @@ npm run dev
 
 `npm run build` produces a fully static `dist/`.
 
+## Deploying
+
+Cloudflare Pages, free plan. Build command `npm run build`, output directory `dist`, no environment variables and no Pages Functions.
+
+The whole deployment is 5 files and ~465 KB against limits of 20,000 files and 25 MiB per file, so nothing here is close to a ceiling. Static asset requests on Pages are unmetered, and since there are no Functions the Workers request quota does not apply at all. The free plan's real constraint is 500 builds/month — one push per build.
+
+The part that *looks* expensive costs Cloudflare nothing: the ~120 MB auction sweep goes browser → `api.hypixel.net` directly, never through the origin, and the ~90 MB cached index lives in the user's own IndexedDB. Hypixel's rate limits apply per visitor rather than to one shared server IP, which is strictly better than a backend would manage.
+
+`public/_redirects` is required, not optional — routing is client-side, so without the `/* /index.html 200` fallback a refresh or a shared link to `/forge` returns a 404.
+
+The boundary: sharing one prebuilt auction index across visitors, or hiding the sweep from them, would need a server — and that is where the free tier stops working (see below).
+
 ## Architecture
 
 **There is no backend.** Hypixel's public endpoints send `access-control-allow-origin: *`, so the browser calls the API directly. This is what makes the app deployable to Cloudflare Pages' free tier — unlimited static requests, nothing to pay for, and no difference between the local build and the deployed one.
