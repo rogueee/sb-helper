@@ -46,21 +46,47 @@ describe("priceEnchant", () => {
   })
 
   // Many enchants only have liquidity at their top level — nobody trades
-  // Critical 1-5 when Critical 6 is what everyone buys. Without this fallback a
-  // typical Hyperion showed ~19 unpriced lines, gutting the comparison.
-  it("substitutes the next purchasable level up when the exact level has no market", () => {
+  // Critical 1-5 when Critical 6 is what everyone buys. Pricing from the level
+  // above was tried and rejected: charging a Magmarizer 6 book for an item that
+  // only has Magmarizer 5 inflated craft costs enough to invent deals that were
+  // not there. A higher level must never leak into the price.
+  it("does not price from a higher level when the exact level has no market", () => {
     const bz = mockBazaar({
       ENCHANTMENT_CRITICAL_5: { buy: 0 }, // listed, empty order book
       ENCHANTMENT_CRITICAL_6: { buy: 20_000 },
     })
     const result = priceEnchant(bz, "critical", 5)
-    expect(result.total).toBe(20_000)
-    expect(result.substituted).toBe(true)
-    expect(result.boughtLevel).toBe(6)
-    expect(result.note).toContain("no lvl 5 market")
+    expect(result.total).toBeNull()
+    expect(result.note).toBe("no sell offers at any level")
   })
 
-  it("prefers combining down over substituting up when both are possible", () => {
+  // Hecatomb is applied from a level 1 book and climbs to X through dungeon
+  // runs. No higher book exists to buy and no combining happens, so charging
+  // 2^9 level 1 books for Hecatomb X would be a cost nobody ever pays — and
+  // since craft cost is subtracted from the listing price, that inflation would
+  // manufacture deals that are not there.
+  it("charges one level 1 book for a self-levelling enchant at any level", () => {
+    const bz = mockBazaar({ ENCHANTMENT_HECATOMB_1: { buy: 5_000_000 } })
+
+    const ten = priceEnchant(bz, "hecatomb", 10)
+    expect(ten.total).toBe(5_000_000)
+    expect(ten.boughtQty).toBe(1)
+    expect(ten.productId).toBe("ENCHANTMENT_HECATOMB_1")
+    expect(ten.note).toBe("levels up in use — lvl 1 book only")
+
+    // Level 1 is the same purchase, so it needs no explanation.
+    expect(priceEnchant(bz, "hecatomb", 1).total).toBe(5_000_000)
+    expect(priceEnchant(bz, "hecatomb", 1).note).toBeUndefined()
+  })
+
+  it("reports a self-levelling enchant as unpriced when its lvl 1 book has no offers", () => {
+    const bz = mockBazaar({ ENCHANTMENT_HECATOMB_1: { buy: 0 } })
+    const result = priceEnchant(bz, "hecatomb", 8)
+    expect(result.total).toBeNull()
+    expect(result.note).toBe("no sell offers")
+  })
+
+  it("still combines down when a lower level is purchasable", () => {
     const bz = mockBazaar({
       ENCHANTMENT_CRITICAL_4: { buy: 100 },
       ENCHANTMENT_CRITICAL_5: { buy: 0 },
@@ -68,12 +94,6 @@ describe("priceEnchant", () => {
     })
     const result = priceEnchant(bz, "critical", 5)
     expect(result.total).toBe(200) // 2 x lvl 4
-    expect(result.substituted).toBeUndefined()
-  })
-
-  it("does not substitute from arbitrarily far above the target", () => {
-    const bz = mockBazaar({ ENCHANTMENT_CRITICAL_10: { buy: 500 } })
-    const result = priceEnchant(bz, "critical", 1)
-    expect(result.total).toBeNull()
+    expect(result.boughtLevel).toBe(4)
   })
 })

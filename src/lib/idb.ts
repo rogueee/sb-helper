@@ -54,9 +54,14 @@ export async function idbSet<T>(key: string, value: T): Promise<void> {
       tx.objectStore(STORE).put({ value, storedAt: Date.now() } satisfies Entry<T>, key)
       tx.oncomplete = () => resolve()
       tx.onerror = () => reject(tx.error)
+      // A quota overrun aborts the transaction without firing onerror.
+      tx.onabort = () => reject(tx.error ?? new Error("transaction aborted"))
     })
-  } catch {
-    // Writing the cache is best-effort; failing to persist must not break a request.
+  } catch (err) {
+    // Writing the cache is best-effort and must not break a request — but it
+    // must not be invisible either. A silently failing write looks exactly like
+    // a working cache until you notice every reload re-paying a 60 s sweep.
+    console.warn(`Cache write failed for "${key}":`, err)
   }
 }
 

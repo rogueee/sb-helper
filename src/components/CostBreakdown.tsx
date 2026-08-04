@@ -50,18 +50,18 @@ export function CostBreakdown({ valuation }: { valuation: Valuation }) {
               {lines.map((line, i) => (
                 <tr key={`${group}-${i}`} className="border-t border-border/50">
                   <td className="py-1.5 pr-3">
-                    <span className={cn(line.total === null && "text-muted-foreground")}>
+                    <span
+                      className={cn(
+                        // Ultimate enchants share the game's light purple, which
+                        // is the same token mythic rarity uses.
+                        line.accent === "ultimate" && "text-rarity-mythic",
+                        line.total === null && "text-muted-foreground",
+                      )}
+                    >
                       {line.label}
                     </span>
                     {line.note && (
-                      <span
-                        className={cn(
-                          "ml-2 text-xs",
-                          line.substituted ? "text-loss/80" : "text-muted-foreground",
-                        )}
-                      >
-                        {line.note}
-                      </span>
+                      <span className="ml-2 text-xs text-muted-foreground">{line.note}</span>
                     )}
                   </td>
                   <td className="py-1.5 pr-3 text-right tabular text-xs text-muted-foreground">
@@ -91,11 +91,6 @@ export function CostBreakdown({ valuation }: { valuation: Valuation }) {
                 excludes {valuation.unpriced.length} unpriced
               </span>
             )}
-            {valuation.substituted.length > 0 && (
-              <span className="ml-2 text-xs font-normal text-muted-foreground">
-                {valuation.substituted.length} priced at a higher level
-              </span>
-            )}
           </td>
           <td
             className="pt-3 text-right font-medium tabular"
@@ -104,6 +99,19 @@ export function CostBreakdown({ valuation }: { valuation: Valuation }) {
             {formatCoins(valuation.componentTotal)}
           </td>
         </tr>
+        {valuation.unpriced.length > 0 && (
+          <tr>
+            {/*
+              Worth stating explicitly: excluded lines only ever push the craft
+              cost down, which makes the spread look worse than it really is.
+              The error runs in the safe direction — it can hide a good deal,
+              never manufacture one.
+            */}
+            <td colSpan={3} className="pt-2 text-xs text-muted-foreground">
+              Real craft cost is higher, so this listing may be a better deal than the spread shows.
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   )

@@ -25,6 +25,8 @@ export interface Listing {
   price: number
   bin: boolean
   end: number
+  /** Seller's player UUID, for linking out to their other listings. */
+  auctioneer: string
   itemBytes: string
 }
 
@@ -39,7 +41,9 @@ export interface SweepProgress {
   total: number
 }
 
-const INDEX_CACHE_KEY = "auctions:index"
+// Versioned: a cached index written before `auctioneer` existed would silently
+// yield rows with no seller link. Bumping costs one re-sweep and avoids that.
+const INDEX_CACHE_KEY = "auctions:index:v2"
 /** Hypixel refreshes auctions about once a minute; five minutes is still useful. */
 const INDEX_TTL_MS = 5 * 60 * 1000
 /** Enough parallelism to saturate a connection without tripping rate limits. */
@@ -55,6 +59,7 @@ function toListing(a: RawAuction): Listing {
     price: a.bin ? a.starting_bid : Math.max(a.highest_bid_amount, a.starting_bid),
     bin: a.bin,
     end: a.end,
+    auctioneer: a.auctioneer,
     itemBytes: a.item_bytes,
   }
 }
@@ -152,6 +157,25 @@ function decodeBatch(items: { uuid: string; itemBytes: string }[]) {
 }
 
 /**
+ * Decodes a batch of listings, dropping any whose NBT could not be read.
+ *
+ * A malformed blob is skipped rather than thrown on: one bad listing out of
+ * hundreds should not cost the user the whole result.
+ */
+export async function decodeListings(candidates: Listing[]): Promise<DecodedListing[]> {
+  if (candidates.length === 0) return []
+
+  const decoded = await decodeBatch(
+    candidates.map((c) => ({ uuid: c.uuid, itemBytes: c.itemBytes })),
+  )
+  const byUuid = new Map(decoded.map((d) => [d.uuid, d.extra]))
+
+  return candidates
+    .map((c) => ({ ...c, extra: byUuid.get(c.uuid) ?? null }))
+    .filter((c): c is DecodedListing => c.extra !== null)
+}
+
+/**
  * All listings of one item id.
  *
  * `displayName` narrows the field cheaply before any decoding; the decoded
@@ -174,16 +198,8 @@ export async function findListings(
     // common name would be wasteful.
     .slice(0, limit)
 
-  if (candidates.length === 0) return []
-
-  const decoded = await decodeBatch(
-    candidates.map((c) => ({ uuid: c.uuid, itemBytes: c.itemBytes })),
-  )
-  const byUuid = new Map(decoded.map((d) => [d.uuid, d.extra]))
-
-  return candidates
-    .map((c) => ({ ...c, extra: byUuid.get(c.uuid) ?? null }))
-    .filter((c): c is DecodedListing => c.extra !== null && c.extra.id === itemId)
+  const decoded = await decodeListings(candidates)
+  return decoded.filter((c) => c.extra.id === itemId)
 }
 
 /** True when the cheap plaintext pass found more matches than `limit` allowed. */

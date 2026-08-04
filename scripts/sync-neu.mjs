@@ -66,6 +66,23 @@ async function fetchRepo() {
 const GRID = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
 
 /**
+ * NEU writes an ingredient as `"ID:QTY"`, or a bare `"ID"` for one.
+ *
+ * Quantities are not always integers in the source — forge recipes carry them as
+ * `"FLAWLESS_AMBER_GEM:2.0"`. Missing the decimal form leaves the ".0" glued to
+ * the id, which then matches no Bazaar product and silently drops the material
+ * from the cost. Only a trailing numeric segment counts, so ids that contain a
+ * colon for other reasons are left intact.
+ */
+function splitQty(cell) {
+  const idx = cell.lastIndexOf(":")
+  if (idx !== -1 && /^\d+(\.\d+)?$/.test(cell.slice(idx + 1))) {
+    return { id: cell.slice(0, idx), qty: Number(cell.slice(idx + 1)) }
+  }
+  return { id: cell, qty: 1 }
+}
+
+/**
  * A compaction recipe is one whose grid uses a single ingredient and nothing else.
  * `"INK_SACK:16"` in 5 slots means 80 Ink Sacs; a bare `"INK_SACK"` means 1.
  * Returns { input, count } or null.
@@ -78,15 +95,7 @@ function readUniformRecipe(recipe) {
   for (const slot of GRID) {
     const cell = recipe[slot]
     if (!cell) continue
-    const idx = cell.lastIndexOf(":")
-    // Some ids legitimately contain ':' (e.g. "PET:4"), so only treat a
-    // trailing all-digit segment as a quantity.
-    let id = cell
-    let qty = 1
-    if (idx !== -1 && /^\d+$/.test(cell.slice(idx + 1))) {
-      id = cell.slice(0, idx)
-      qty = Number(cell.slice(idx + 1))
-    }
+    const { id, qty } = splitQty(cell)
     if (!id) continue
     if (input === null) input = id
     else if (input !== id) return null // mixed ingredients — not a compaction
@@ -130,6 +139,66 @@ function buildCompaction(items) {
 }
 
 /**
+ * Forge recipes: the Dwarven Forge turns Bazaar materials into an item after a
+ * fixed wait. Hypixel publishes neither the inputs nor the duration, but NEU
+ * carries both on the output item:
+ *
+ *   { type: "forge", inputs: ["ENCHANTED_MITHRIL:160"], count: 1,
+ *     overrideOutputId: "REFINED_MITHRIL", duration: 21600 }
+ *
+ * `duration` is in seconds, which is what makes profit-per-hour computable.
+ * Recipes without one are dropped: a forge flip ranked on time is meaningless
+ * without the time, and guessing a duration would silently distort the ranking.
+ */
+function buildForge(items) {
+  /** @type {Array<{output: string, count: number, seconds: number, inputs: Array<{id: string, qty: number}>}>} */
+  const recipes = []
+
+  for (const [name, item] of items) {
+    for (const recipe of item.recipes ?? []) {
+      if (recipe?.type !== "forge") continue
+
+      const seconds = Number(recipe.duration)
+      if (!Number.isFinite(seconds) || seconds <= 0) continue
+
+      const inputs = []
+      let malformed = false
+      for (const cell of recipe.inputs ?? []) {
+        if (typeof cell !== "string") continue
+        const { id, qty } = splitQty(cell)
+        if (!id || !Number.isFinite(qty) || qty <= 0) {
+          malformed = true
+          break
+        }
+        // The same material can appear in two slots; fold it into one line.
+        const existing = inputs.find((i) => i.id === id)
+        if (existing) existing.qty += qty
+        else inputs.push({ id, qty })
+      }
+      if (malformed || inputs.length === 0) continue
+
+      const count = Number(recipe.count ?? 1)
+      recipes.push({
+        output: recipe.overrideOutputId ?? item.internalname ?? name,
+        count: Number.isFinite(count) && count > 0 ? count : 1,
+        seconds,
+        inputs: inputs.sort((a, b) => a.id.localeCompare(b.id)),
+      })
+    }
+  }
+
+  // An item can list the same forge recipe more than once across NEU files;
+  // keep one per output, preferring the shortest forge time.
+  const best = new Map()
+  for (const r of recipes) {
+    const prev = best.get(r.output)
+    if (!prev || r.seconds < prev.seconds) best.set(r.output, r)
+  }
+
+  return [...best.values()].sort((a, b) => a.output.localeCompare(b.output))
+}
+
+/**
  * NBT stores the applied reforge as a lowercase name. Two kinds exist and they
  * cost different things:
  *   - stone reforges  -> consume a purchasable reforge stone (price it from the Bazaar/AH)
@@ -166,14 +235,17 @@ const { items, constants } = await fetchRepo()
 if (items.size === 0) throw new Error("NEU tarball contained no items — aborting rather than writing empty data")
 
 const compaction = buildCompaction(items)
+const forge = buildForge(items)
 const { stoneMap, basicMap } = buildReforges(constants)
 
 mkdirSync(OUT, { recursive: true })
 writeFileSync(resolve(OUT, "compaction.json"), JSON.stringify(compaction, null, 2) + "\n")
+writeFileSync(resolve(OUT, "forge.json"), JSON.stringify(forge, null, 2) + "\n")
 writeFileSync(resolve(OUT, "reforge-stones.json"), JSON.stringify(stoneMap, null, 2) + "\n")
 writeFileSync(resolve(OUT, "reforge-basic.json"), JSON.stringify(basicMap, null, 2) + "\n")
 
 console.log(`NEU items scanned : ${items.size}`)
 console.log(`compaction steps  : ${compaction.length}  -> src/data/compaction.json`)
+console.log(`forge recipes     : ${forge.length}  -> src/data/forge.json`)
 console.log(`stone reforges    : ${Object.keys(stoneMap).length}  -> src/data/reforge-stones.json`)
 console.log(`basic reforges    : ${Object.keys(basicMap).length}  -> src/data/reforge-basic.json`)

@@ -11,7 +11,7 @@
  * So the cost of level L is solved bottom-up:
  *     cost(L) = min( bazaarPrice(L), 2 x cost(L-1) )
  */
-import type { BazaarPrices } from "./bazaar"
+import { unpricedNote, type BazaarPrices } from "./bazaar"
 
 export interface EnchantCost {
   enchant: string
@@ -25,20 +25,44 @@ export interface EnchantCost {
   boughtQty?: number
   /** True when the level was extrapolated by combining rather than quoted directly. */
   estimated?: boolean
-  /**
-   * True when a *higher* level was priced because the exact one has no market.
-   * The resulting item is better than the listing, so this is an upper bound.
-   */
-  substituted?: boolean
   note?: string
 }
-
-/** How many levels above the target to consider when the exact level has no market. */
-const MAX_SUBSTITUTE_STEPS = 3
 
 export function enchantProductId(enchant: string, level: number): string {
   return `ENCHANTMENT_${enchant.toUpperCase()}_${level}`
 }
+
+/**
+ * Ultimate enchants are namespaced `ultimate_` in NBT and on the Bazaar, but
+ * the game shows them as light purple text without that word — nobody calls it
+ * "Ultimate Wisdom V". The prefix is a data artifact, so it is dropped from the
+ * label and the colour carries the distinction instead.
+ */
+const ULTIMATE_PREFIX = "ultimate_"
+
+export function isUltimateEnchant(enchant: string): boolean {
+  return enchant.toLowerCase().startsWith(ULTIMATE_PREFIX)
+}
+
+/** `ultimate_wisdom` -> `wisdom`; anything else is returned unchanged. */
+export function enchantBaseName(enchant: string): string {
+  return isUltimateEnchant(enchant) ? enchant.slice(ULTIMATE_PREFIX.length) : enchant
+}
+
+/**
+ * Enchants that are not bought at level, but level themselves up through use.
+ *
+ * Hecatomb is applied from a level 1 book and climbs to X by completing dungeon
+ * runs — there is no Hecatomb X book to buy and no combining involved. Charging
+ * anything beyond the level 1 book would invent a cost that no player ever pays,
+ * and since the craft calculator subtracts craft cost from the listing price,
+ * that inflation would manufacture deals that are not there.
+ *
+ * Other enchants share the mechanic (Champion, Compact, Cultivating, Expertise,
+ * Toxophilite); they are deliberately not listed until confirmed, since wrongly
+ * flattening a genuinely tiered enchant understates craft cost.
+ */
+const LEVELING_ENCHANTS = new Set(["hecatomb"])
 
 /**
  * Cheapest way to obtain one book of `enchant` at `level`.
@@ -49,6 +73,27 @@ export function enchantProductId(enchant: string, level: number): string {
  */
 export function priceEnchant(bz: BazaarPrices, enchant: string, level: number): EnchantCost {
   const productId = enchantProductId(enchant, level)
+
+  // Self-levelling enchants cost one level 1 book no matter what level they
+  // reached, so the combine walk below does not apply to them at all.
+  if (LEVELING_ENCHANTS.has(enchant.toLowerCase())) {
+    const baseId = enchantProductId(enchant, 1)
+    const unit = bz.price(baseId, "instabuy")
+    return {
+      enchant,
+      level,
+      productId: baseId,
+      total: unit,
+      boughtLevel: 1,
+      boughtQty: 1,
+      note:
+        unit === null
+          ? unpricedNote(bz, baseId)
+          : level > 1
+            ? "levels up in use — lvl 1 book only"
+            : undefined,
+    }
+  }
 
   let best: { total: number; boughtLevel: number; boughtQty: number } | null = null
   /** The enchant is a known Bazaar product, even if nothing is currently offered. */
@@ -71,26 +116,11 @@ export function priceEnchant(bz: BazaarPrices, enchant: string, level: number): 
 
   if (!best) {
     // Many enchants only have liquidity at their top level — nobody trades
-    // Critical 1-5 when Critical 6 is what everyone buys. You cannot split a
-    // higher book back down, so the realistic way to obtain the enchant is to
-    // buy the next level up. That overshoots the listing's exact config, so it
-    // is reported as a substitution rather than folded in silently.
-    for (let lvl = level + 1; lvl <= level + MAX_SUBSTITUTE_STEPS; lvl++) {
-      const substituteId = enchantProductId(enchant, lvl)
-      const unit = bz.price(substituteId, "instabuy")
-      if (unit === null) continue
-      return {
-        enchant,
-        level,
-        productId,
-        total: unit,
-        boughtLevel: lvl,
-        boughtQty: 1,
-        substituted: true,
-        note: `lvl ${lvl} — no lvl ${level} market`,
-      }
-    }
-
+    // Critical 1-5 when Critical 6 is what everyone buys. Pricing those from the
+    // level above was tried and rejected: it charges a Magmarizer 6 book for an
+    // item that only has Magmarizer 5, which inflated craft costs badly enough
+    // to invent deals that were not there. These are excluded from the total
+    // instead, the same way auction-only components like runes are.
     return {
       enchant,
       level,

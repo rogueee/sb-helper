@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils"
 
 const TABS = [
   { to: "/craft", label: "Craft vs buy" },
+  { to: "/forge", label: "Forge flips" },
+  { to: "/bazaar", label: "Bazaar flips" },
   { to: "/compact", label: "Compaction" },
 ]
 

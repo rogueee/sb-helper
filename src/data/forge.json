@@ -1,0 +1,2090 @@
+[
+  {
+    "output": "AMBER_MATERIAL",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "FINE_AMBER_GEM",
+        "qty": 12
+      },
+      {
+        "id": "GOLDEN_PLATE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "AMBER_NECKLACE",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "FLAWLESS_AMBER_GEM",
+        "qty": 2
+      },
+      {
+        "id": "GLOSSY_GEMSTONE",
+        "qty": 32
+      }
+    ]
+  },
+  {
+    "output": "AMBER_POLISHED_DRILL_ENGINE",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "DRILL_ENGINE",
+        "qty": 5
+      },
+      {
+        "id": "PERFECT_AMBER_GEM",
+        "qty": 5
+      },
+      {
+        "id": "PLASMA",
+        "qty": 32
+      },
+      {
+        "id": "PRECURSOR_APPARATUS",
+        "qty": 16
+      },
+      {
+        "id": "SAPPHIRE_POLISHED_DRILL_ENGINE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "AMETHYST_GAUNTLET",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "FLAWLESS_AMETHYST_GEM",
+        "qty": 2
+      },
+      {
+        "id": "GLOSSY_GEMSTONE",
+        "qty": 32
+      }
+    ]
+  },
+  {
+    "output": "AMMONITE;4",
+    "count": 1,
+    "seconds": 259200,
+    "inputs": [
+      {
+        "id": "HELIX",
+        "qty": 1
+      },
+      {
+        "id": "SKYBLOCK_COIN",
+        "qty": 300000
+      }
+    ]
+  },
+  {
+    "output": "ANKYLOSAURUS;4",
+    "count": 1,
+    "seconds": 604800,
+    "inputs": [
+      {
+        "id": "CLUBBED_FOSSIL",
+        "qty": 1
+      },
+      {
+        "id": "FLAWLESS_OPAL_GEM",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "BASE_CAMP_TRAVEL_SCROLL",
+    "count": 1,
+    "seconds": 36000,
+    "inputs": [
+      {
+        "id": "ENCHANTED_ENDER_PEARL",
+        "qty": 16
+      },
+      {
+        "id": "FLAWLESS_ONYX_GEM",
+        "qty": 1
+      },
+      {
+        "id": "SKYBLOCK_COIN",
+        "qty": 500000
+      }
+    ]
+  },
+  {
+    "output": "BEACON_2",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "BEACON_1",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 5
+      }
+    ]
+  },
+  {
+    "output": "BEACON_3",
+    "count": 1,
+    "seconds": 108000,
+    "inputs": [
+      {
+        "id": "BEACON_2",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 10
+      }
+    ]
+  },
+  {
+    "output": "BEACON_4",
+    "count": 1,
+    "seconds": 144000,
+    "inputs": [
+      {
+        "id": "BEACON_3",
+        "qty": 1
+      },
+      {
+        "id": "PLASMA",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 20
+      }
+    ]
+  },
+  {
+    "output": "BEACON_5",
+    "count": 1,
+    "seconds": 180000,
+    "inputs": [
+      {
+        "id": "BEACON_4",
+        "qty": 1
+      },
+      {
+        "id": "PLASMA",
+        "qty": 5
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 40
+      }
+    ]
+  },
+  {
+    "output": "BEJEWELED_COLLAR",
+    "count": 1,
+    "seconds": 7200,
+    "inputs": [
+      {
+        "id": "BEJEWELED_HANDLE",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "output": "BEJEWELED_HANDLE",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "GLACITE_JEWEL",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "output": "CRYSTAL_HOLLOWS_TRAVEL_SCROLL",
+    "count": 1,
+    "seconds": 36000,
+    "inputs": [
+      {
+        "id": "ENCHANTED_ENDER_PEARL",
+        "qty": 16
+      },
+      {
+        "id": "FINE_RUBY_GEM",
+        "qty": 80
+      },
+      {
+        "id": "FLAWED_RUBY_GEM",
+        "qty": 48
+      },
+      {
+        "id": "SKYBLOCK_COIN",
+        "qty": 50000
+      }
+    ]
+  },
+  {
+    "output": "DIAMONITE",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "REFINED_DIAMOND",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "output": "DIVAN_BOOTS",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "DIVAN_FRAGMENT",
+        "qty": 4
+      },
+      {
+        "id": "FLAWLESS_RUBY_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GEMSTONE_MIXTURE",
+        "qty": 10
+      }
+    ]
+  },
+  {
+    "output": "DIVAN_CHESTPLATE",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "DIVAN_FRAGMENT",
+        "qty": 8
+      },
+      {
+        "id": "FLAWLESS_RUBY_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GEMSTONE_MIXTURE",
+        "qty": 10
+      }
+    ]
+  },
+  {
+    "output": "DIVAN_DRILL",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "DIVAN_ALLOY",
+        "qty": 1
+      },
+      {
+        "id": "SKYBLOCK_COIN",
+        "qty": 50000000
+      },
+      {
+        "id": "TITANIUM_DRILL_4",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "DIVAN_HELMET",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "DIVAN_FRAGMENT",
+        "qty": 5
+      },
+      {
+        "id": "FLAWLESS_RUBY_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GEMSTONE_MIXTURE",
+        "qty": 10
+      }
+    ]
+  },
+  {
+    "output": "DIVAN_LEGGINGS",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "DIVAN_FRAGMENT",
+        "qty": 7
+      },
+      {
+        "id": "FLAWLESS_RUBY_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GEMSTONE_MIXTURE",
+        "qty": 10
+      }
+    ]
+  },
+  {
+    "output": "DIVAN_PENDANT",
+    "count": 1,
+    "seconds": 604800,
+    "inputs": [
+      {
+        "id": "DIVAN_FRAGMENT",
+        "qty": 10
+      },
+      {
+        "id": "PERFECT_PLATE",
+        "qty": 1
+      },
+      {
+        "id": "SHATTERED_PENDANT",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "DIVAN_POWDER_COATING",
+    "count": 1,
+    "seconds": 129600,
+    "inputs": [
+      {
+        "id": "DIVAN_FRAGMENT",
+        "qty": 5
+      },
+      {
+        "id": "ENCHANTED_GOLD_BLOCK",
+        "qty": 16
+      },
+      {
+        "id": "GLOSSY_GEMSTONE",
+        "qty": 32
+      },
+      {
+        "id": "REFINED_MINERAL",
+        "qty": 32
+      }
+    ]
+  },
+  {
+    "output": "DRILL_ENGINE",
+    "count": 1,
+    "seconds": 108000,
+    "inputs": [
+      {
+        "id": "ENCHANTED_IRON_BLOCK",
+        "qty": 1
+      },
+      {
+        "id": "ENCHANTED_REDSTONE_BLOCK",
+        "qty": 3
+      },
+      {
+        "id": "GOLDEN_PLATE",
+        "qty": 1
+      },
+      {
+        "id": "TREASURITE",
+        "qty": 10
+      }
+    ]
+  },
+  {
+    "output": "DWARVEN_HANDWARMERS",
+    "count": 1,
+    "seconds": 14400,
+    "inputs": [
+      {
+        "id": "FLAWLESS_AMBER_GEM",
+        "qty": 1
+      },
+      {
+        "id": "FLAWLESS_JADE_GEM",
+        "qty": 1
+      },
+      {
+        "id": "TUNGSTEN_PLATE",
+        "qty": 1
+      },
+      {
+        "id": "UMBER_PLATE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "DWARVEN_METAL",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "GLACITE_AMALGAMATION",
+        "qty": 4
+      },
+      {
+        "id": "REFINED_TUNGSTEN",
+        "qty": 4
+      },
+      {
+        "id": "REFINED_UMBER",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "output": "FORGE_TRAVEL_SCROLL",
+    "count": 1,
+    "seconds": 18000,
+    "inputs": [
+      {
+        "id": "ENCHANTED_ENDER_PEARL",
+        "qty": 16
+      },
+      {
+        "id": "MITHRIL_ORE",
+        "qty": 48
+      },
+      {
+        "id": "SKYBLOCK_COIN",
+        "qty": 25000
+      },
+      {
+        "id": "TITANIUM_ORE",
+        "qty": 80
+      }
+    ]
+  },
+  {
+    "output": "FRIGID_HUSK",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "FLAWLESS_ONYX_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GLACITE_AMALGAMATION",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "output": "FUEL_TANK",
+    "count": 1,
+    "seconds": 36000,
+    "inputs": [
+      {
+        "id": "ENCHANTED_COAL_BLOCK",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "output": "GEMSTONE_CHAMBER",
+    "count": 1,
+    "seconds": 14400,
+    "inputs": [
+      {
+        "id": "GEMSTONE_MIXTURE",
+        "qty": 1
+      },
+      {
+        "id": "SKYBLOCK_COIN",
+        "qty": 25000
+      },
+      {
+        "id": "WORM_MEMBRANE",
+        "qty": 100
+      }
+    ]
+  },
+  {
+    "output": "GEMSTONE_DRILL_1",
+    "count": 1,
+    "seconds": 14400,
+    "inputs": [
+      {
+        "id": "DRILL_ENGINE",
+        "qty": 1
+      },
+      {
+        "id": "FINE_RUBY_GEM",
+        "qty": 6
+      },
+      {
+        "id": "FUEL_TANK",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "GEMSTONE_DRILL_2",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "GEMSTONE_DRILL_1",
+        "qty": 1
+      },
+      {
+        "id": "GEMSTONE_MIXTURE",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "output": "GEMSTONE_DRILL_3",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "FLAWLESS_TOPAZ_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GEMSTONE_DRILL_2",
+        "qty": 1
+      },
+      {
+        "id": "GEMSTONE_MIXTURE",
+        "qty": 3
+      },
+      {
+        "id": "MAGMA_CORE",
+        "qty": 8
+      }
+    ]
+  },
+  {
+    "output": "GEMSTONE_DRILL_4",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "FLAWLESS_JASPER_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GEMSTONE_DRILL_3",
+        "qty": 1
+      },
+      {
+        "id": "MAGMA_CORE",
+        "qty": 16
+      },
+      {
+        "id": "TREASURITE",
+        "qty": 100
+      }
+    ]
+  },
+  {
+    "output": "GEMSTONE_FUEL_TANK",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "GEMSTONE_MIXTURE",
+        "qty": 10
+      },
+      {
+        "id": "PRECURSOR_APPARATUS",
+        "qty": 4
+      },
+      {
+        "id": "TITANIUM_FUEL_TANK",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "GEMSTONE_MIXTURE",
+    "count": 1,
+    "seconds": 14400,
+    "inputs": [
+      {
+        "id": "FINE_AMBER_GEM",
+        "qty": 4
+      },
+      {
+        "id": "FINE_AMETHYST_GEM",
+        "qty": 4
+      },
+      {
+        "id": "FINE_JADE_GEM",
+        "qty": 4
+      },
+      {
+        "id": "FINE_SAPPHIRE_GEM",
+        "qty": 4
+      },
+      {
+        "id": "SLUDGE_JUICE",
+        "qty": 320
+      }
+    ]
+  },
+  {
+    "output": "GLACITE_AMALGAMATION",
+    "count": 1,
+    "seconds": 14400,
+    "inputs": [
+      {
+        "id": "ENCHANTED_GLACITE",
+        "qty": 256
+      },
+      {
+        "id": "FINE_AQUAMARINE_GEM",
+        "qty": 4
+      },
+      {
+        "id": "FINE_CITRINE_GEM",
+        "qty": 4
+      },
+      {
+        "id": "FINE_ONYX_GEM",
+        "qty": 4
+      },
+      {
+        "id": "FINE_PERIDOT_GEM",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "output": "GLACITE_CHISEL",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "BEJEWELED_HANDLE",
+        "qty": 1
+      },
+      {
+        "id": "GLACITE_AMALGAMATION",
+        "qty": 8
+      },
+      {
+        "id": "MITHRIL_PLATE",
+        "qty": 1
+      },
+      {
+        "id": "REINFORCED_CHISEL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "GLACITE_LANTERN",
+    "count": 1,
+    "seconds": 43200,
+    "inputs": [
+      {
+        "id": "ENCHANTED_EMERALD_BLOCK",
+        "qty": 2
+      },
+      {
+        "id": "GLACITE_AMALGAMATION",
+        "qty": 4
+      },
+      {
+        "id": "TITANIUM_LANTERN",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "GLEAMING_CRYSTAL",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "GLOSSY_GEMSTONE",
+        "qty": 32
+      },
+      {
+        "id": "REFINED_DIAMOND",
+        "qty": 2
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "GOBLIN_OMELETTE",
+    "count": 1,
+    "seconds": 64800,
+    "inputs": [
+      {
+        "id": "GOBLIN_EGG",
+        "qty": 96
+      }
+    ]
+  },
+  {
+    "output": "GOBLIN_OMELETTE_BLUE_CHEESE",
+    "count": 1,
+    "seconds": 64800,
+    "inputs": [
+      {
+        "id": "FLAWLESS_SAPPHIRE_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GOBLIN_EGG_BLUE",
+        "qty": 96
+      },
+      {
+        "id": "GOBLIN_OMELETTE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "GOBLIN_OMELETTE_PESTO",
+    "count": 1,
+    "seconds": 64800,
+    "inputs": [
+      {
+        "id": "FLAWLESS_JADE_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GOBLIN_EGG_GREEN",
+        "qty": 96
+      },
+      {
+        "id": "GOBLIN_OMELETTE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "GOBLIN_OMELETTE_SPICY",
+    "count": 1,
+    "seconds": 64800,
+    "inputs": [
+      {
+        "id": "FLAWLESS_RUBY_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GOBLIN_EGG_RED",
+        "qty": 96
+      },
+      {
+        "id": "GOBLIN_OMELETTE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "GOBLIN_OMELETTE_SUNNY_SIDE",
+    "count": 1,
+    "seconds": 64800,
+    "inputs": [
+      {
+        "id": "FLAWLESS_TOPAZ_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GOBLIN_EGG_YELLOW",
+        "qty": 96
+      },
+      {
+        "id": "GOBLIN_OMELETTE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "GOBLIN;4",
+    "count": 1,
+    "seconds": 604800,
+    "inputs": [
+      {
+        "id": "FLAWLESS_AMBER_GEM",
+        "qty": 1
+      },
+      {
+        "id": "UGLY_FOSSIL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "GOLDEN_PLATE",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_GOLD_BLOCK",
+        "qty": 2
+      },
+      {
+        "id": "GLACITE_JEWEL",
+        "qty": 5
+      },
+      {
+        "id": "REFINED_DIAMOND",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "HOT_STUFF",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_HARD_STONE",
+        "qty": 128
+      },
+      {
+        "id": "FLAWLESS_TOPAZ_GEM",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "JADE_BELT",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "FLAWLESS_JADE_GEM",
+        "qty": 2
+      },
+      {
+        "id": "GLOSSY_GEMSTONE",
+        "qty": 32
+      }
+    ]
+  },
+  {
+    "output": "MAMMOTH;4",
+    "count": 1,
+    "seconds": 604800,
+    "inputs": [
+      {
+        "id": "FLAWLESS_ONYX_GEM",
+        "qty": 1
+      },
+      {
+        "id": "TUSK_FOSSIL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "MITHRIL_BELT",
+    "count": 1,
+    "seconds": 3600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_MITHRIL",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "output": "MITHRIL_CLOAK",
+    "count": 1,
+    "seconds": 3600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_MITHRIL",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "output": "MITHRIL_DRILL_1",
+    "count": 1,
+    "seconds": 14400,
+    "inputs": [
+      {
+        "id": "DRILL_ENGINE",
+        "qty": 1
+      },
+      {
+        "id": "FUEL_TANK",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "output": "MITHRIL_DRILL_2",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "GOLDEN_PLATE",
+        "qty": 1
+      },
+      {
+        "id": "MITHRIL_DRILL_1",
+        "qty": 1
+      },
+      {
+        "id": "MITHRIL_PLATE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "MITHRIL_DRILL_ENGINE",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "DRILL_ENGINE",
+        "qty": 2
+      },
+      {
+        "id": "MITHRIL_PLATE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "MITHRIL_FUEL_TANK",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "FUEL_TANK",
+        "qty": 5
+      },
+      {
+        "id": "REFINED_DIAMOND",
+        "qty": 5
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 10
+      }
+    ]
+  },
+  {
+    "output": "MITHRIL_GAUNTLET",
+    "count": 1,
+    "seconds": 3600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_MITHRIL",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "output": "MITHRIL_LANTERN",
+    "count": 1,
+    "seconds": 1800,
+    "inputs": [
+      {
+        "id": "ENCHANTED_EMERALD",
+        "qty": 16
+      },
+      {
+        "id": "LANTERN",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "MITHRIL_NECKLACE",
+    "count": 1,
+    "seconds": 3600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_MITHRIL",
+        "qty": 3
+      }
+    ]
+  },
+  {
+    "output": "MITHRIL_PLATE",
+    "count": 1,
+    "seconds": 64800,
+    "inputs": [
+      {
+        "id": "ENCHANTED_IRON_BLOCK",
+        "qty": 1
+      },
+      {
+        "id": "GOLDEN_PLATE",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 5
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "MOLE;4",
+    "count": 1,
+    "seconds": 259200,
+    "inputs": [
+      {
+        "id": "CLAW_FOSSIL",
+        "qty": 1
+      },
+      {
+        "id": "SKYBLOCK_COIN",
+        "qty": 300000
+      }
+    ]
+  },
+  {
+    "output": "PENGUIN;4",
+    "count": 1,
+    "seconds": 604800,
+    "inputs": [
+      {
+        "id": "FLAWLESS_AQUAMARINE_GEM",
+        "qty": 1
+      },
+      {
+        "id": "WEBBED_FOSSIL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_AMBER_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "AMBER_CRYSTAL",
+        "qty": 1
+      },
+      {
+        "id": "FLAWLESS_AMBER_GEM",
+        "qty": 5
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_AMETHYST_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "AMETHYST_CRYSTAL",
+        "qty": 1
+      },
+      {
+        "id": "FLAWLESS_AMETHYST_GEM",
+        "qty": 5
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_AQUAMARINE_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "AQUAMARINE_CRYSTAL",
+        "qty": 1
+      },
+      {
+        "id": "FLAWLESS_AQUAMARINE_GEM",
+        "qty": 5
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_CHISEL",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "BEJEWELED_HANDLE",
+        "qty": 1
+      },
+      {
+        "id": "GLACITE_CHISEL",
+        "qty": 1
+      },
+      {
+        "id": "PERFECT_PLATE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_CITRINE_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "CITRINE_CRYSTAL",
+        "qty": 1
+      },
+      {
+        "id": "FLAWLESS_CITRINE_GEM",
+        "qty": 5
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_JADE_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "FLAWLESS_JADE_GEM",
+        "qty": 5
+      },
+      {
+        "id": "JADE_CRYSTAL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_JASPER_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "FLAWLESS_JASPER_GEM",
+        "qty": 5
+      },
+      {
+        "id": "JASPER_CRYSTAL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_ONYX_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "FLAWLESS_ONYX_GEM",
+        "qty": 5
+      },
+      {
+        "id": "ONYX_CRYSTAL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_OPAL_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "FLAWLESS_OPAL_GEM",
+        "qty": 5
+      },
+      {
+        "id": "OPAL_CRYSTAL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_PERIDOT_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "FLAWLESS_PERIDOT_GEM",
+        "qty": 5
+      },
+      {
+        "id": "PERIDOT_CRYSTAL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_PLATE",
+    "count": 1,
+    "seconds": 1800,
+    "inputs": [
+      {
+        "id": "MITHRIL_PLATE",
+        "qty": 1
+      },
+      {
+        "id": "TUNGSTEN_PLATE",
+        "qty": 1
+      },
+      {
+        "id": "UMBER_PLATE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_RUBY_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "FLAWLESS_RUBY_GEM",
+        "qty": 5
+      },
+      {
+        "id": "RUBY_CRYSTAL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_SAPPHIRE_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "FLAWLESS_SAPPHIRE_GEM",
+        "qty": 5
+      },
+      {
+        "id": "SAPPHIRE_CRYSTAL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECT_TOPAZ_GEM",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "FLAWLESS_TOPAZ_GEM",
+        "qty": 5
+      },
+      {
+        "id": "TOPAZ_CRYSTAL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PERFECTLY_CUT_FUEL_TANK",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "GEMSTONE_FUEL_TANK",
+        "qty": 1
+      },
+      {
+        "id": "GEMSTONE_MIXTURE",
+        "qty": 25
+      },
+      {
+        "id": "PLASMA",
+        "qty": 32
+      },
+      {
+        "id": "PRECURSOR_APPARATUS",
+        "qty": 16
+      }
+    ]
+  },
+  {
+    "output": "PETRIFIED_STARFALL",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "STARFALL",
+        "qty": 512
+      }
+    ]
+  },
+  {
+    "output": "POCKET_ICEBERG",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "GLACITE_JEWEL",
+        "qty": 5
+      }
+    ]
+  },
+  {
+    "output": "POLISHED_TOPAZ_ROD",
+    "count": 1,
+    "seconds": 43200,
+    "inputs": [
+      {
+        "id": "BEJEWELED_HANDLE",
+        "qty": 3
+      },
+      {
+        "id": "FLAWLESS_TOPAZ_GEM",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "output": "PORTABLE_CAMPFIRE",
+    "count": 1,
+    "seconds": 1800,
+    "inputs": [
+      {
+        "id": "MATCH_STICKS",
+        "qty": 16
+      },
+      {
+        "id": "REFINED_UMBER",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "POWER_CRYSTAL",
+    "count": 1,
+    "seconds": 7200,
+    "inputs": [
+      {
+        "id": "STARFALL",
+        "qty": 256
+      }
+    ]
+  },
+  {
+    "output": "POWER_RELIC",
+    "count": 1,
+    "seconds": 28800,
+    "inputs": [
+      {
+        "id": "GLACITE_AMALGAMATION",
+        "qty": 32
+      },
+      {
+        "id": "PERFECT_PLATE",
+        "qty": 1
+      },
+      {
+        "id": "POWER_ARTIFACT",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "PURE_MITHRIL",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "output": "REFINED_DIAMOND",
+    "count": 1,
+    "seconds": 28800,
+    "inputs": [
+      {
+        "id": "ENCHANTED_DIAMOND_BLOCK",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "output": "REFINED_MITHRIL",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_MITHRIL",
+        "qty": 160
+      }
+    ]
+  },
+  {
+    "output": "REFINED_TITANIUM",
+    "count": 1,
+    "seconds": 43200,
+    "inputs": [
+      {
+        "id": "ENCHANTED_TITANIUM",
+        "qty": 16
+      }
+    ]
+  },
+  {
+    "output": "REFINED_TUNGSTEN",
+    "count": 1,
+    "seconds": 3600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_TUNGSTEN",
+        "qty": 160
+      }
+    ]
+  },
+  {
+    "output": "REFINED_UMBER",
+    "count": 1,
+    "seconds": 3600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_UMBER",
+        "qty": 160
+      }
+    ]
+  },
+  {
+    "output": "REINFORCED_CHISEL",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "BEJEWELED_HANDLE",
+        "qty": 1
+      },
+      {
+        "id": "CHISEL",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_TUNGSTEN",
+        "qty": 2
+      },
+      {
+        "id": "REFINED_UMBER",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "output": "ROCK_GEMSTONE",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_COBBLESTONE",
+        "qty": 128
+      },
+      {
+        "id": "TREASURITE",
+        "qty": 64
+      }
+    ]
+  },
+  {
+    "output": "RUBY_POLISHED_DRILL_ENGINE",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "DRILL_ENGINE",
+        "qty": 5
+      },
+      {
+        "id": "PERFECT_RUBY_GEM",
+        "qty": 1
+      },
+      {
+        "id": "PRECURSOR_APPARATUS",
+        "qty": 4
+      },
+      {
+        "id": "TITANIUM_DRILL_ENGINE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "SAPPHIRE_CLOAK",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "FLAWLESS_SAPPHIRE_GEM",
+        "qty": 2
+      },
+      {
+        "id": "GLOSSY_GEMSTONE",
+        "qty": 32
+      }
+    ]
+  },
+  {
+    "output": "SAPPHIRE_POLISHED_DRILL_ENGINE",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "DRILL_ENGINE",
+        "qty": 5
+      },
+      {
+        "id": "PERFECT_SAPPHIRE_GEM",
+        "qty": 3
+      },
+      {
+        "id": "PLASMA",
+        "qty": 16
+      },
+      {
+        "id": "PRECURSOR_APPARATUS",
+        "qty": 8
+      },
+      {
+        "id": "RUBY_POLISHED_DRILL_ENGINE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "SECRET_RAILROAD_PASS",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "CORLEONITE",
+        "qty": 8
+      },
+      {
+        "id": "FLAWLESS_RUBY_GEM",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "output": "SKELETON_KEY",
+    "count": 1,
+    "seconds": 1800,
+    "inputs": [
+      {
+        "id": "BEJEWELED_HANDLE",
+        "qty": 1
+      },
+      {
+        "id": "PERFECT_PLATE",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "SPINOSAURUS;4",
+    "count": 1,
+    "seconds": 604800,
+    "inputs": [
+      {
+        "id": "FLAWLESS_AQUAMARINE_GEM",
+        "qty": 1
+      },
+      {
+        "id": "SPINE_FOSSIL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "STARFALL_SEASONING",
+    "count": 1,
+    "seconds": 64800,
+    "inputs": [
+      {
+        "id": "STARFALL",
+        "qty": 64
+      },
+      {
+        "id": "TREASURITE",
+        "qty": 16
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_ARTIFACT",
+    "count": 1,
+    "seconds": 129600,
+    "inputs": [
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 12
+      },
+      {
+        "id": "TITANIUM_RING",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_BELT",
+    "count": 1,
+    "seconds": 16200,
+    "inputs": [
+      {
+        "id": "MITHRIL_BELT",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MINERAL",
+        "qty": 16
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_CLOAK",
+    "count": 1,
+    "seconds": 16200,
+    "inputs": [
+      {
+        "id": "MITHRIL_CLOAK",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MINERAL",
+        "qty": 16
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_DRILL_1",
+    "count": 1,
+    "seconds": 14400,
+    "inputs": [
+      {
+        "id": "DRILL_ENGINE",
+        "qty": 1
+      },
+      {
+        "id": "FUEL_TANK",
+        "qty": 1
+      },
+      {
+        "id": "GOLDEN_PLATE",
+        "qty": 6
+      },
+      {
+        "id": "REFINED_MITHRIL",
+        "qty": 8
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 8
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_DRILL_2",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "MITHRIL_PLATE",
+        "qty": 5
+      },
+      {
+        "id": "REFINED_DIAMOND",
+        "qty": 10
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 12
+      },
+      {
+        "id": "TITANIUM_DRILL_1",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_DRILL_3",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "ENCHANTED_IRON_BLOCK",
+        "qty": 2
+      },
+      {
+        "id": "MITHRIL_PLATE",
+        "qty": 10
+      },
+      {
+        "id": "PLASMA",
+        "qty": 20
+      },
+      {
+        "id": "REFINED_DIAMOND",
+        "qty": 20
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 16
+      },
+      {
+        "id": "TITANIUM_DRILL_2",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_DRILL_4",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "CORLEONITE",
+        "qty": 30
+      },
+      {
+        "id": "FLAWLESS_RUBY_GEM",
+        "qty": 1
+      },
+      {
+        "id": "GEMSTONE_MIXTURE",
+        "qty": 16
+      },
+      {
+        "id": "MITHRIL_PLATE",
+        "qty": 10
+      },
+      {
+        "id": "REFINED_DIAMOND",
+        "qty": 5
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 32
+      },
+      {
+        "id": "TITANIUM_DRILL_3",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_DRILL_ENGINE",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "DRILL_ENGINE",
+        "qty": 2
+      },
+      {
+        "id": "MITHRIL_DRILL_ENGINE",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 8
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_FUEL_TANK",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "FUEL_TANK",
+        "qty": 5
+      },
+      {
+        "id": "MITHRIL_FUEL_TANK",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_DIAMOND",
+        "qty": 5
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 10
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_GAUNTLET",
+    "count": 1,
+    "seconds": 16200,
+    "inputs": [
+      {
+        "id": "MITHRIL_GAUNTLET",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MINERAL",
+        "qty": 16
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_LANTERN",
+    "count": 1,
+    "seconds": 14400,
+    "inputs": [
+      {
+        "id": "ENCHANTED_EMERALD_BLOCK",
+        "qty": 1
+      },
+      {
+        "id": "MITHRIL_LANTERN",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_NECKLACE",
+    "count": 1,
+    "seconds": 16200,
+    "inputs": [
+      {
+        "id": "MITHRIL_NECKLACE",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_MINERAL",
+        "qty": 16
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_RELIC",
+    "count": 1,
+    "seconds": 259200,
+    "inputs": [
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 20
+      },
+      {
+        "id": "TITANIUM_ARTIFACT",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_RING",
+    "count": 1,
+    "seconds": 72000,
+    "inputs": [
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 6
+      },
+      {
+        "id": "TITANIUM_TALISMAN",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_TALISMAN",
+    "count": 1,
+    "seconds": 50400,
+    "inputs": [
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 2
+      }
+    ]
+  },
+  {
+    "output": "TITANIUM_TESSERACT",
+    "count": 1,
+    "seconds": 21600,
+    "inputs": [
+      {
+        "id": "ENCHANTED_LAPIS_LAZULI",
+        "qty": 16
+      },
+      {
+        "id": "REFINED_TITANIUM",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "TUNGSTEN_KEY",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "BEJEWELED_HANDLE",
+        "qty": 1
+      },
+      {
+        "id": "ENCHANTED_TUNGSTEN",
+        "qty": 192
+      }
+    ]
+  },
+  {
+    "output": "TUNGSTEN_KEYCHAIN",
+    "count": 1,
+    "seconds": 64800,
+    "inputs": [
+      {
+        "id": "FUEL_TANK",
+        "qty": 5
+      },
+      {
+        "id": "PERFECT_OPAL_GEM",
+        "qty": 1
+      },
+      {
+        "id": "TUNGSTEN_PLATE",
+        "qty": 5
+      }
+    ]
+  },
+  {
+    "output": "TUNGSTEN_PLATE",
+    "count": 1,
+    "seconds": 10800,
+    "inputs": [
+      {
+        "id": "GLACITE_AMALGAMATION",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_TUNGSTEN",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "output": "TYRANNOSAURUS;4",
+    "count": 1,
+    "seconds": 604800,
+    "inputs": [
+      {
+        "id": "FLAWLESS_ONYX_GEM",
+        "qty": 1
+      },
+      {
+        "id": "FOOTPRINT_FOSSIL",
+        "qty": 1
+      }
+    ]
+  },
+  {
+    "output": "UMBER_KEY",
+    "count": 1,
+    "seconds": 30,
+    "inputs": [
+      {
+        "id": "BEJEWELED_HANDLE",
+        "qty": 1
+      },
+      {
+        "id": "ENCHANTED_UMBER",
+        "qty": 192
+      }
+    ]
+  },
+  {
+    "output": "UMBER_PLATE",
+    "count": 1,
+    "seconds": 10800,
+    "inputs": [
+      {
+        "id": "GLACITE_AMALGAMATION",
+        "qty": 1
+      },
+      {
+        "id": "REFINED_UMBER",
+        "qty": 4
+      }
+    ]
+  },
+  {
+    "output": "WILL_O_WISP",
+    "count": 1,
+    "seconds": 86400,
+    "inputs": [
+      {
+        "id": "CAGED_WISP",
+        "qty": 1
+      },
+      {
+        "id": "ENCHANTED_EMERALD_BLOCK",
+        "qty": 8
+      },
+      {
+        "id": "EVERBURNING_FLAME",
+        "qty": 1
+      },
+      {
+        "id": "GLACITE_LANTERN",
+        "qty": 1
+      },
+      {
+        "id": "PERFECT_PLATE",
+        "qty": 1
+      }
+    ]
+  }
+]

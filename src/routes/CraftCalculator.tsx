@@ -1,35 +1,25 @@
-import { useCallback, useEffect, useMemo, useState } from "react"
-import { ChevronDown, Loader2, RefreshCw } from "lucide-react"
+import { useEffect, useMemo, useState } from "react"
+import { ChevronDown, ExternalLink, Loader2 } from "lucide-react"
 import { ItemSearch, type SearchableItem } from "@/components/ItemSearch"
 import { CostBreakdown } from "@/components/CostBreakdown"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { EmptyIndex, IndexStatus, RestoringIndex, useAuctionIndex } from "@/components/AuctionIndex"
 import { useBazaar, useItemMap } from "@/lib/queries"
-import {
-  findListings,
-  loadCachedIndex,
-  sweepAuctions,
-  type AuctionIndex,
-  type DecodedListing,
-  type SweepProgress,
-} from "@/lib/auctionIndex"
+import { findListings, type DecodedListing } from "@/lib/auctionIndex"
 import { valuate, type Valuation } from "@/lib/pricing/valuate"
 import type { BazaarPrices } from "@/lib/pricing/bazaar"
-import { formatCoins, formatExact, formatRelativeTime, formatSigned } from "@/lib/format"
+import { ListingFilters } from "@/components/ListingFilters"
+import {
+  applyFiltersAndSort,
+  DEFAULT_SORT,
+  EMPTY_FILTERS,
+  type ListingFilterState,
+  type PricedListing,
+  type SortChain,
+} from "@/lib/listings"
+import { rarityColorClass, rarityLabel, sortRarities } from "@/lib/rarity"
+import { formatCoins, formatExact, formatSigned } from "@/lib/format"
 import { cn } from "@/lib/utils"
-
-interface PricedListing {
-  listing: DecodedListing
-  valuation: Valuation
-  /** Base item + every modifier. Null when no clean base could be priced. */
-  craftCost: number | null
-  /**
-   * listing price - craftCost. Negative means the listing is cheaper than
-   * assembling the same thing yourself, i.e. worth buying.
-   */
-  spread: number | null
-}
 
 /**
  * Cheapest way to obtain the unmodified item: its Bazaar price if it trades
@@ -62,36 +52,20 @@ export function CraftCalculator() {
   const { data: bazaar } = useBazaar()
   const { data: itemMap, items } = useItemMap()
 
-  const [index, setIndex] = useState<AuctionIndex | null>(null)
-  const [progress, setProgress] = useState<SweepProgress | null>(null)
+  const { index, progress, error: indexError, load: runSweep, restoring } = useAuctionIndex()
   const [selected, setSelected] = useState<SearchableItem | null>(null)
   const [results, setResults] = useState<PricedListing[] | null>(null)
   const [baseCost, setBaseCost] = useState<number | null>(null)
+  const [filters, setFilters] = useState<ListingFilterState>(EMPTY_FILTERS)
+  const [sort, setSort] = useState<SortChain>(DEFAULT_SORT)
   const [searching, setSearching] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
-
-  // Reuse a recent index rather than making the user re-pay the sweep.
-  useEffect(() => {
-    loadCachedIndex().then((cached) => cached && setIndex(cached))
-  }, [])
 
   const searchable = useMemo<SearchableItem[]>(
     () => (items ?? []).map((i) => ({ id: i.id, name: i.name })),
     [items],
   )
-
-  const runSweep = useCallback(async () => {
-    setProgress({ done: 0, total: 50 })
-    setError(null)
-    try {
-      setIndex(await sweepAuctions(setProgress))
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load the auction house")
-    } finally {
-      setProgress(null)
-    }
-  }, [])
 
   // Re-price whenever the selection, the index, or the Bazaar snapshot changes.
   useEffect(() => {
@@ -121,10 +95,16 @@ export function CraftCalculator() {
         setResults(
           valued.map((p) => {
             const craftCost = base === null ? null : base + p.valuation.componentTotal
+            const extra = p.listing.extra
             return {
               ...p,
               craftCost,
               spread: craftCost === null ? null : p.listing.price - craftCost,
+              stars: Math.max(
+                typeof extra.upgrade_level === "number" ? extra.upgrade_level : 0,
+                typeof extra.dungeon_item_level === "number" ? extra.dungeon_item_level : 0,
+              ),
+              tier: p.listing.tier,
             }
           }),
         )
@@ -139,7 +119,37 @@ export function CraftCalculator() {
     }
   }, [selected, index, bazaar, itemMap])
 
-  const cheapest = results?.[0]
+  // A new search starts clean: stale chips from the previous item would hide
+  // everything, and its results must not linger under the new item's name while
+  // the new ones decode.
+  useEffect(() => {
+    setFilters(EMPTY_FILTERS)
+    setResults(null)
+  }, [selected])
+
+  const visible = useMemo(
+    () => (results ? applyFiltersAndSort(results, filters, sort) : null),
+    [results, filters, sort],
+  )
+
+  const availableRarities = useMemo(
+    () => (results ? sortRarities(results.map((p) => p.tier)) : []),
+    [results],
+  )
+  const availableStars = useMemo(
+    () => (results ? [...new Set(results.map((p) => p.stars))].sort((a, b) => a - b) : []),
+    [results],
+  )
+
+  // The summary describes the cheapest listing overall, independent of sort
+  // order, so it stays a stable reference point while you re-sort.
+  const cheapest = useMemo(
+    () =>
+      visible && visible.length > 0
+        ? visible.reduce((min, p) => (p.listing.price < min.listing.price ? p : min))
+        : undefined,
+    [visible],
+  )
 
   return (
     <div className="space-y-6">
@@ -153,9 +163,11 @@ export function CraftCalculator() {
         <IndexStatus index={index} progress={progress} onRefresh={runSweep} />
       </div>
 
-      {error && <p className="text-sm text-loss">{error}</p>}
+      {(error ?? indexError) && <p className="text-sm text-loss">{error ?? indexError}</p>}
 
-      {!index && !progress ? (
+      {restoring && !index ? (
+        <RestoringIndex />
+      ) : !index && !progress ? (
         <EmptyIndex onLoad={runSweep} />
       ) : (
         <>
@@ -166,14 +178,20 @@ export function CraftCalculator() {
             autoFocus
           />
 
-          {searching && (
+          {/*
+            Only take over the view on a first search. The Bazaar refetches on a
+            timer, which re-prices everything — unmounting the table for that
+            would yank the filter controls out from under the cursor and reset
+            scroll every minute. Re-pricing dims the existing results instead.
+          */}
+          {searching && !results && (
             <p className="flex items-center gap-2 text-sm text-muted-foreground">
               <Loader2 className="size-4 animate-spin" /> Decoding listings…
             </p>
           )}
 
-          {selected && results && !searching && (
-            <>
+          {selected && results && visible && (
+            <div className="space-y-6">
               {results.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   No BIN listings found for {selected.name}.
@@ -183,9 +201,27 @@ export function CraftCalculator() {
                   <SummaryRow
                     item={selected}
                     cheapest={cheapest}
-                    count={results.length}
+                    count={visible.length}
                     baseCost={baseCost}
                   />
+
+                  <ListingFilters
+                    availableRarities={availableRarities}
+                    availableStars={availableStars}
+                    filters={filters}
+                    onFiltersChange={setFilters}
+                    sort={sort}
+                    onSortChange={setSort}
+                    shown={visible.length}
+                    total={results.length}
+                    busy={searching}
+                  />
+
+                  {visible.length === 0 ? (
+                    <p className="text-sm text-muted-foreground">
+                      No listings match these filters.
+                    </p>
+                  ) : (
                   <div className="rounded-lg border">
                     <div className="grid grid-cols-[1fr_auto_auto_auto_2rem] items-center gap-4 border-b px-4 py-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
                       <span>Listing</span>
@@ -194,7 +230,7 @@ export function CraftCalculator() {
                       <span className="text-right">Spread</span>
                       <span />
                     </div>
-                    {results.map((p) => (
+                    {visible.map((p) => (
                       <ListingRow
                         key={p.listing.uuid}
                         priced={p}
@@ -205,72 +241,14 @@ export function CraftCalculator() {
                       />
                     ))}
                   </div>
+                  )}
                 </>
               )}
-            </>
+            </div>
           )}
         </>
       )}
     </div>
-  )
-}
-
-function IndexStatus({
-  index,
-  progress,
-  onRefresh,
-}: {
-  index: AuctionIndex | null
-  progress: SweepProgress | null
-  onRefresh: () => void
-}) {
-  if (progress) {
-    const pct = Math.round((progress.done / progress.total) * 100)
-    return (
-      <div className="w-56 space-y-1.5">
-        <div className="flex justify-between text-xs text-muted-foreground">
-          <span>Loading auctions</span>
-          <span className="tabular">
-            {progress.done}/{progress.total}
-          </span>
-        </div>
-        <div className="h-1 overflow-hidden rounded-full bg-secondary">
-          <div className="h-full bg-primary transition-all" style={{ width: `${pct}%` }} />
-        </div>
-      </div>
-    )
-  }
-
-  if (!index) return null
-
-  return (
-    <div className="flex items-center gap-3 text-xs text-muted-foreground">
-      <span className="tabular">
-        {index.listings.length.toLocaleString()} auctions ·{" "}
-        {formatRelativeTime(index.fetchedAt)}
-      </span>
-      <Button variant="ghost" size="sm" onClick={onRefresh}>
-        <RefreshCw /> Refresh
-      </Button>
-    </div>
-  )
-}
-
-function EmptyIndex({ onLoad }: { onLoad: () => void }) {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Load the auction house</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <p className="max-w-prose text-sm text-muted-foreground">
-          Hypixel has no server-side search, so finding every listing of an item means downloading
-          all 50 pages of active auctions — roughly 120 MB, once. After that, searches are instant
-          and the index is cached for five minutes.
-        </p>
-        <Button onClick={onLoad}>Load auction index</Button>
-      </CardContent>
-    </Card>
   )
 }
 
@@ -336,6 +314,30 @@ function Stat({
   )
 }
 
+/**
+ * Link out to everything else the seller has up.
+ *
+ * Hypixel has no web auction house, so this goes to sky.coflnet.com, which
+ * indexes live auctions by player. It sits inside the expanded panel rather
+ * than on the row because the row is itself a button, and a link nested in a
+ * button is both invalid markup and impossible to click without toggling.
+ */
+function SellerLink({ auctioneer }: { auctioneer: string | undefined }) {
+  if (!auctioneer) return null
+
+  return (
+    <a
+      href={`https://sky.coflnet.com/player/${auctioneer}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-3 inline-flex items-center gap-1.5 text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+    >
+      <ExternalLink className="size-3" />
+      Seller's other listings
+    </a>
+  )
+}
+
 function ListingRow({
   priced,
   expanded,
@@ -357,7 +359,17 @@ function ListingRow({
         className="grid w-full grid-cols-[1fr_auto_auto_auto_2rem] items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-accent/50"
       >
         <span className="flex items-center gap-2 truncate">
-          <span className="truncate">{listing.name}</span>
+          {/*
+            The item name carries the rarity colour rather than a separate
+            swatch — it is how the AH itself presents rarity, so it reads
+            without a legend.
+          */}
+          <span className={cn("truncate font-medium", rarityColorClass(priced.tier))}>
+            {listing.name}
+          </span>
+          <span className="shrink-0 text-xs text-muted-foreground" title={rarityLabel(priced.tier)}>
+            {rarityLabel(priced.tier)}
+          </span>
           {valuation.unpriced.length > 0 && (
             <Badge variant="outline" className="shrink-0">
               +{valuation.unpriced.length} unpriced
@@ -393,6 +405,7 @@ function ListingRow({
       {expanded && (
         <div className="border-t bg-muted/30 px-4 pb-4">
           <CostBreakdown valuation={valuation} />
+          <SellerLink auctioneer={listing.auctioneer} />
         </div>
       )}
     </div>

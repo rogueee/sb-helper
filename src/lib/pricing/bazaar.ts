@@ -9,7 +9,7 @@
  * calculator lets you pick, because the raw-vs-compacted verdict can flip
  * between instasell and patient sell-offer pricing.
  */
-import type { BazaarResponse } from "../hypixel"
+import type { BazaarQuickStatus, BazaarResponse } from "../hypixel"
 
 export type PriceMode = "instabuy" | "instasell" | "sellOffer" | "buyOrder"
 
@@ -50,6 +50,17 @@ export class BazaarPrices {
 
   productIds(): string[] {
     return Object.keys(this.data.products)
+  }
+
+  /**
+   * Every product's order-book summary. The per-item `price` lookups above are
+   * the right tool for pricing a known component; this is for whole-market
+   * scans that need volume and order counts as well as price.
+   */
+  entries(): [string, BazaarQuickStatus][] {
+    return Object.entries(this.data.products)
+      .filter(([, p]) => p.quick_status)
+      .map(([id, p]) => [id, p.quick_status])
   }
 
   /**

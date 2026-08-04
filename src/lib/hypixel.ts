@@ -103,6 +103,8 @@ export async function fetchItems(): Promise<SkyblockItem[]> {
 
 export interface RawAuction {
   uuid: string
+  /** Seller's player UUID. */
+  auctioneer: string
   item_name: string
   item_lore: string
   /** Plaintext alias blob — searchable without decoding NBT. */

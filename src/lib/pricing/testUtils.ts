@@ -22,3 +22,30 @@ export function mockBazaar(prices: Record<string, { buy?: number; sell?: number 
   }
   return new BazaarPrices({ success: true, lastUpdated: 0, products })
 }
+
+/**
+ * Like `mockBazaar`, but also sets weekly volume — needed by anything that
+ * ranks on liquidity rather than price alone.
+ */
+export function mockBazaarFull(
+  prices: Record<string, { buy: number; sell: number; buyWeek?: number; sellWeek?: number }>,
+): BazaarPrices {
+  const products: BazaarResponse["products"] = {}
+  for (const [id, p] of Object.entries(prices)) {
+    products[id] = {
+      product_id: id,
+      quick_status: {
+        productId: id,
+        buyPrice: p.buy,
+        buyVolume: 0,
+        buyMovingWeek: p.buyWeek ?? 0,
+        buyOrders: 0,
+        sellPrice: p.sell,
+        sellVolume: 0,
+        sellMovingWeek: p.sellWeek ?? 0,
+        sellOrders: 0,
+      },
+    }
+  }
+  return new BazaarPrices({ success: true, lastUpdated: 0, products })
+}

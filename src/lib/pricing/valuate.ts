@@ -10,7 +10,7 @@
 import type { ExtraAttributes, NbtValue } from "../nbt"
 import type { SkyblockItem } from "../hypixel"
 import { unpricedNote, type BazaarPrices } from "./bazaar"
-import { priceEnchantments } from "./enchants"
+import { enchantBaseName, isUltimateEnchant, priceEnchantments } from "./enchants"
 import { priceStars, priceDungeonConversion, prettyId, titleCase } from "./essence"
 import { priceGemstones } from "./gemstones"
 import reforgeStones from "@/data/reforge-stones.json"
@@ -31,9 +31,9 @@ export interface CostLine {
   unit: number | null
   total: number | null
   group: CostGroup
-  /** Priced via a higher enchant level than the listing has — an upper bound. */
-  substituted?: boolean
   note?: string
+  /** Tints the line; ultimate enchants read as light purple in game. */
+  accent?: "ultimate"
 }
 
 export interface Valuation {
@@ -43,8 +43,6 @@ export interface Valuation {
   componentTotal: number
   /** Lines we could not price; a non-empty list means componentTotal is a floor. */
   unpriced: CostLine[]
-  /** Lines priced via a higher enchant level than the listing carries. */
-  substituted: CostLine[]
   /** Pets carry their value in level/xp/candy, which this tool does not model. */
   isPet: boolean
 }
@@ -146,14 +144,17 @@ export function valuate(
   if (extra.enchantments) {
     for (const e of priceEnchantments(bz, extra.enchantments)) {
       lines.push({
-        label: `${titleCase(e.enchant)} ${e.level}`,
+        // The "Ultimate" prefix is dropped — it is a namespace, not part of the
+        // name anyone uses — and the line is tinted instead, matching how the
+        // game itself distinguishes them.
+        label: `${titleCase(enchantBaseName(e.enchant))} ${e.level}`,
         productId: e.productId,
         quantity: e.boughtQty ?? 1,
         unit: e.total !== null && e.boughtQty ? e.total / e.boughtQty : e.total,
         total: e.total,
         group: "enchants",
-        substituted: e.substituted,
         note: e.note,
+        accent: isUltimateEnchant(e.enchant) ? "ultimate" : undefined,
       })
     }
   }
@@ -280,7 +281,6 @@ export function valuate(
   }
 
   const unpriced = lines.filter((l) => l.total === null)
-  const substituted = lines.filter((l) => l.substituted)
   const componentTotal = lines.reduce((sum, l) => sum + (l.total ?? 0), 0)
 
   return {
@@ -288,7 +288,6 @@ export function valuate(
     lines,
     componentTotal,
     unpriced,
-    substituted,
     isPet: extra.petInfo !== undefined || itemId === "PET",
   }
 }
