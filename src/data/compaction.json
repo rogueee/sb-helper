@@ -1,0 +1,2107 @@
+[
+  {
+    "input": "AGARICUS_CAP",
+    "output": "AGARICUS_CAP_BUNCH",
+    "ratio": 20
+  },
+  {
+    "input": "AGARIMOO_TONGUE",
+    "output": "AGARIMOO_TALISMAN",
+    "ratio": 9
+  },
+  {
+    "input": "ANCIENT_CLAW",
+    "output": "ENCHANTED_ANCIENT_CLAW",
+    "ratio": 160
+  },
+  {
+    "input": "BLAZE_ROD",
+    "output": "ENCHANTED_BLAZE_POWDER",
+    "ratio": 160
+  },
+  {
+    "input": "BONE",
+    "output": "ENCHANTED_BONE",
+    "ratio": 160
+  },
+  {
+    "input": "BONE",
+    "output": "SKELETON_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "BROWN_MUSHROOM",
+    "output": "ENCHANTED_BROWN_MUSHROOM",
+    "ratio": 160
+  },
+  {
+    "input": "BROWN_MUSHROOM",
+    "output": "HUGE_MUSHROOM_1",
+    "ratio": 9
+  },
+  {
+    "input": "BURNING_KUUDRA_CORE",
+    "output": "FIERY_KUUDRA_CORE",
+    "ratio": 4
+  },
+  {
+    "input": "CACTUS",
+    "output": "CACTUS_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "CACTUS",
+    "output": "CACTUS_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "CACTUS",
+    "output": "CACTUS_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "CACTUS",
+    "output": "CACTUS_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "CADUCOUS_STEM",
+    "output": "CADUCOUS_FEEDER",
+    "ratio": 448
+  },
+  {
+    "input": "CADUCOUS_STEM",
+    "output": "CADUCOUS_LEGUME",
+    "ratio": 30
+  },
+  {
+    "input": "CADUCOUS_STEM",
+    "output": "CADUCOUS_STEM_BUNCH",
+    "ratio": 20
+  },
+  {
+    "input": "CARROT_ITEM",
+    "output": "ENCHANTED_CARROT",
+    "ratio": 160
+  },
+  {
+    "input": "CARROT_ITEM",
+    "output": "SIMPLE_CARROT_CANDY",
+    "ratio": 576
+  },
+  {
+    "input": "CHILI_PEPPER",
+    "output": "STUFFED_CHILI_PEPPER",
+    "ratio": 160
+  },
+  {
+    "input": "CLAY_BALL",
+    "output": "CLAY",
+    "ratio": 4
+  },
+  {
+    "input": "CLAY_BALL",
+    "output": "ENCHANTED_CLAY_BALL",
+    "ratio": 160
+  },
+  {
+    "input": "CLAY_BRICK",
+    "output": "BRICK",
+    "ratio": 4
+  },
+  {
+    "input": "CLAY_BRICK",
+    "output": "FLOWER_POT_ITEM",
+    "ratio": 3
+  },
+  {
+    "input": "COBBLESTONE",
+    "output": "ENCHANTED_COBBLESTONE",
+    "ratio": 160
+  },
+  {
+    "input": "COBBLESTONE",
+    "output": "FURNACE",
+    "ratio": 8
+  },
+  {
+    "input": "COMPOST",
+    "output": "ENCHANTED_COMPOST",
+    "ratio": 160
+  },
+  {
+    "input": "CONCENTRATED_STONE",
+    "output": "SIL_EX",
+    "ratio": 9
+  },
+  {
+    "input": "CROPIE",
+    "output": "CROPIE_TALISMAN",
+    "ratio": 256
+  },
+  {
+    "input": "CRUDE_GABAGOOL",
+    "output": "VERY_CRUDE_GABAGOOL",
+    "ratio": 192
+  },
+  {
+    "input": "CRYSTAL_FRAGMENT",
+    "output": "CRYSTAL_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "CRYSTAL_FRAGMENT",
+    "output": "CRYSTAL_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "CRYSTAL_FRAGMENT",
+    "output": "CRYSTAL_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "CRYSTAL_FRAGMENT",
+    "output": "CRYSTAL_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "DIAMOND",
+    "output": "DIAMOND_BLOCK",
+    "ratio": 9
+  },
+  {
+    "input": "DIAMOND",
+    "output": "DIAMOND_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "DIAMOND",
+    "output": "DIAMOND_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "DIAMOND",
+    "output": "DIAMOND_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "DIAMOND",
+    "output": "DIAMOND_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "EGG",
+    "output": "CHICKEN_HEAD",
+    "ratio": 5
+  },
+  {
+    "input": "EGG",
+    "output": "ENCHANTED_EGG",
+    "ratio": 144
+  },
+  {
+    "input": "EMBER_FRAGMENT",
+    "output": "EMBER_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "EMBER_FRAGMENT",
+    "output": "EMBER_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "EMBER_FRAGMENT",
+    "output": "EMBER_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "EMBER_FRAGMENT",
+    "output": "EMBER_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "EMERALD",
+    "output": "EMERALD_BLOCK",
+    "ratio": 9
+  },
+  {
+    "input": "ENCHANTED_ACACIA_LOG",
+    "output": "ACACIA_BIRDHOUSE",
+    "ratio": 384
+  },
+  {
+    "input": "ENCHANTED_BLAZE_POWDER",
+    "output": "ENCHANTED_BLAZE_ROD",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_BLAZE_POWDER",
+    "output": "FIRE_TALISMAN",
+    "ratio": 9
+  },
+  {
+    "input": "ENCHANTED_BLAZE_ROD",
+    "output": "BLAZE_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "ENCHANTED_BLAZE_ROD",
+    "output": "BLAZE_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "ENCHANTED_BLAZE_ROD",
+    "output": "BLAZE_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "ENCHANTED_BLAZE_ROD",
+    "output": "BLAZE_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "ENCHANTED_BONE",
+    "output": "ENCHANTED_BONE_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_BONE",
+    "output": "SKELETON_HELMET",
+    "ratio": 320
+  },
+  {
+    "input": "ENCHANTED_CACTUS_GREEN",
+    "output": "ENCHANTED_CACTUS",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_CLAY_BALL",
+    "output": "ENCHANTED_CLAY_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_COAL",
+    "output": "ENCHANTED_COAL_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_COBBLESTONE",
+    "output": "HASTE_RING",
+    "ratio": 128
+  },
+  {
+    "input": "ENCHANTED_DARK_OAK_LOG",
+    "output": "GROWTH_BOOTS",
+    "ratio": 256
+  },
+  {
+    "input": "ENCHANTED_DARK_OAK_LOG",
+    "output": "GROWTH_CHESTPLATE",
+    "ratio": 512
+  },
+  {
+    "input": "ENCHANTED_DARK_OAK_LOG",
+    "output": "GROWTH_HELMET",
+    "ratio": 320
+  },
+  {
+    "input": "ENCHANTED_DARK_OAK_LOG",
+    "output": "GROWTH_LEGGINGS",
+    "ratio": 448
+  },
+  {
+    "input": "ENCHANTED_DIAMOND",
+    "output": "ENCHANTED_DIAMOND_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_DIAMOND",
+    "output": "HARDENED_DIAMOND_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "ENCHANTED_DIAMOND",
+    "output": "HARDENED_DIAMOND_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "ENCHANTED_DIAMOND",
+    "output": "HARDENED_DIAMOND_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "ENCHANTED_DIAMOND",
+    "output": "HARDENED_DIAMOND_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "ENCHANTED_DIAMOND_BLOCK",
+    "output": "PERFECT_BOOTS_1",
+    "ratio": 4
+  },
+  {
+    "input": "ENCHANTED_DIAMOND_BLOCK",
+    "output": "PERFECT_CHESTPLATE_1",
+    "ratio": 8
+  },
+  {
+    "input": "ENCHANTED_DIAMOND_BLOCK",
+    "output": "PERFECT_HELMET_1",
+    "ratio": 5
+  },
+  {
+    "input": "ENCHANTED_DIAMOND_BLOCK",
+    "output": "PERFECT_LEGGINGS_1",
+    "ratio": 7
+  },
+  {
+    "input": "ENCHANTED_EGG",
+    "output": "SUPER_EGG",
+    "ratio": 144
+  },
+  {
+    "input": "ENCHANTED_EMERALD",
+    "output": "EMERALD_RING",
+    "ratio": 32
+  },
+  {
+    "input": "ENCHANTED_EMERALD",
+    "output": "ENCHANTED_EMERALD_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_EMERALD_BLOCK",
+    "output": "EMERALD_ARMOR_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "ENCHANTED_EMERALD_BLOCK",
+    "output": "EMERALD_ARMOR_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "ENCHANTED_EMERALD_BLOCK",
+    "output": "EMERALD_ARMOR_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "ENCHANTED_EMERALD_BLOCK",
+    "output": "EMERALD_ARMOR_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "ENCHANTED_ENDER_PEARL",
+    "output": "ABSOLUTE_ENDER_PEARL",
+    "ratio": 80
+  },
+  {
+    "input": "ENCHANTED_GHAST_TEAR",
+    "output": "SILVER_FANG",
+    "ratio": 25
+  },
+  {
+    "input": "ENCHANTED_GLOWSTONE_DUST",
+    "output": "ENCHANTED_GLOWSTONE",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_GOLD",
+    "output": "ENCHANTED_GOLD_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_GUNPOWDER",
+    "output": "CREEPER_LEGGINGS",
+    "ratio": 224
+  },
+  {
+    "input": "ENCHANTED_HARD_STONE",
+    "output": "CONCENTRATED_STONE",
+    "ratio": 576
+  },
+  {
+    "input": "ENCHANTED_HARD_STONE",
+    "output": "FLAME_BREAKER_BOOTS",
+    "ratio": 80
+  },
+  {
+    "input": "ENCHANTED_HARD_STONE",
+    "output": "FLAME_BREAKER_CHESTPLATE",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_HARD_STONE",
+    "output": "FLAME_BREAKER_HELMET",
+    "ratio": 100
+  },
+  {
+    "input": "ENCHANTED_HARD_STONE",
+    "output": "FLAME_BREAKER_LEGGINGS",
+    "ratio": 140
+  },
+  {
+    "input": "ENCHANTED_ICE",
+    "output": "ENCHANTED_PACKED_ICE",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_INK_SACK",
+    "output": "BAIT_RING",
+    "ratio": 288
+  },
+  {
+    "input": "ENCHANTED_IRON",
+    "output": "ENCHANTED_IRON_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_IRON",
+    "output": "ENCHANTED_SHEARS",
+    "ratio": 2
+  },
+  {
+    "input": "ENCHANTED_IRON",
+    "output": "GOLEM_ARMOR_BOOTS",
+    "ratio": 40
+  },
+  {
+    "input": "ENCHANTED_IRON",
+    "output": "GOLEM_ARMOR_CHESTPLATE",
+    "ratio": 80
+  },
+  {
+    "input": "ENCHANTED_IRON",
+    "output": "GOLEM_ARMOR_HELMET",
+    "ratio": 50
+  },
+  {
+    "input": "ENCHANTED_IRON",
+    "output": "GOLEM_ARMOR_LEGGINGS",
+    "ratio": 70
+  },
+  {
+    "input": "ENCHANTED_LAPIS_LAZULI",
+    "output": "ENCHANTED_LAPIS_LAZULI_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_LAPIS_LAZULI_BLOCK",
+    "output": "EXPERIENCE_ARTIFACT",
+    "ratio": 9
+  },
+  {
+    "input": "ENCHANTED_MAGMA_CREAM",
+    "output": "LAVA_TALISMAN",
+    "ratio": 9
+  },
+  {
+    "input": "ENCHANTED_MAGMA_CREAM",
+    "output": "WHIPPED_MAGMA_CREAM",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_MELON",
+    "output": "ENCHANTED_MELON_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_MITHRIL",
+    "output": "MITHRIL_COAT",
+    "ratio": 32
+  },
+  {
+    "input": "ENCHANTED_MUTTON",
+    "output": "ENCHANTED_COOKED_MUTTON",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_MYCELIUM",
+    "output": "ENCHANTED_MYCELIUM_CUBE",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_NETHER_STALK",
+    "output": "MUTANT_NETHER_STALK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_PORK",
+    "output": "ENCHANTED_GRILLED_PORK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_POTATO",
+    "output": "ENCHANTED_BAKED_POTATO",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_PUMPKIN",
+    "output": "FARMER_BOOTS",
+    "ratio": 256
+  },
+  {
+    "input": "ENCHANTED_PUMPKIN",
+    "output": "POLISHED_PUMPKIN",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_QUARTZ",
+    "output": "ENCHANTED_QUARTZ_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_RAW_FISH",
+    "output": "ENCHANTED_COOKED_FISH",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_RAW_SALMON",
+    "output": "ENCHANTED_COOKED_SALMON",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_RAW_SALMON",
+    "output": "SALMON_BOOTS_NEW",
+    "ratio": 4
+  },
+  {
+    "input": "ENCHANTED_RAW_SALMON",
+    "output": "SALMON_CHESTPLATE_NEW",
+    "ratio": 8
+  },
+  {
+    "input": "ENCHANTED_RAW_SALMON",
+    "output": "SALMON_HELMET_NEW",
+    "ratio": 5
+  },
+  {
+    "input": "ENCHANTED_RAW_SALMON",
+    "output": "SALMON_LEGGINGS_NEW",
+    "ratio": 7
+  },
+  {
+    "input": "ENCHANTED_RED_SAND",
+    "output": "ENCHANTED_RED_SAND_CUBE",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_ROTTEN_FLESH",
+    "output": "ZOMBIE_HEART",
+    "ratio": 256
+  },
+  {
+    "input": "ENCHANTED_SEEDS",
+    "output": "BOX_OF_SEEDS",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_SLIME_BALL",
+    "output": "ENCHANTED_SLIME_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_SPONGE",
+    "output": "ENCHANTED_WET_SPONGE",
+    "ratio": 40
+  },
+  {
+    "input": "ENCHANTED_STRING",
+    "output": "SPIDER_BOOTS",
+    "ratio": 256
+  },
+  {
+    "input": "ENCHANTED_SUGAR",
+    "output": "ENCHANTED_SUGAR_CANE",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_SULPHUR",
+    "output": "ENCHANTED_SULPHUR_CUBE",
+    "ratio": 160
+  },
+  {
+    "input": "ENCHANTED_WET_SPONGE",
+    "output": "SPONGE_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "ENCHANTED_WET_SPONGE",
+    "output": "SPONGE_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "ENCHANTED_WET_SPONGE",
+    "output": "SPONGE_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "ENCHANTED_WET_SPONGE",
+    "output": "SPONGE_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "ENCHANTED_WHEAT",
+    "output": "ENCHANTED_HAY_BALE",
+    "ratio": 160
+  },
+  {
+    "input": "ENDER_PEARL",
+    "output": "ENCHANTED_ENDER_PEARL",
+    "ratio": 20
+  },
+  {
+    "input": "ENDER_STONE",
+    "output": "ENCHANTED_ENDSTONE",
+    "ratio": 160
+  },
+  {
+    "input": "FEATHER",
+    "output": "ENCHANTED_FEATHER",
+    "ratio": 160
+  },
+  {
+    "input": "FEATHER",
+    "output": "FEATHER_TALISMAN",
+    "ratio": 108
+  },
+  {
+    "input": "FERMENTO",
+    "output": "CONDENSED_FERMENTO",
+    "ratio": 9
+  },
+  {
+    "input": "FIERY_KUUDRA_CORE",
+    "output": "INFERNAL_KUUDRA_CORE",
+    "ratio": 4
+  },
+  {
+    "input": "FINE_AMBER_GEM",
+    "output": "FLAWLESS_AMBER_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_AMETHYST_GEM",
+    "output": "FLAWLESS_AMETHYST_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_AQUAMARINE_GEM",
+    "output": "FLAWLESS_AQUAMARINE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_CITRINE_GEM",
+    "output": "FLAWLESS_CITRINE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_JADE_GEM",
+    "output": "FLAWLESS_JADE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_JASPER_GEM",
+    "output": "FLAWLESS_JASPER_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_ONYX_GEM",
+    "output": "FLAWLESS_ONYX_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_OPAL_GEM",
+    "output": "FLAWLESS_OPAL_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_PERIDOT_GEM",
+    "output": "FLAWLESS_PERIDOT_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_RUBY_GEM",
+    "output": "FLAWLESS_RUBY_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_SAPPHIRE_GEM",
+    "output": "FLAWLESS_SAPPHIRE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FINE_TOPAZ_GEM",
+    "output": "FLAWLESS_TOPAZ_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_AMBER_GEM",
+    "output": "FINE_AMBER_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_AMETHYST_GEM",
+    "output": "FINE_AMETHYST_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_AQUAMARINE_GEM",
+    "output": "FINE_AQUAMARINE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_CITRINE_GEM",
+    "output": "FINE_CITRINE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_JADE_GEM",
+    "output": "FINE_JADE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_JASPER_GEM",
+    "output": "FINE_JASPER_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_ONYX_GEM",
+    "output": "FINE_ONYX_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_OPAL_GEM",
+    "output": "FINE_OPAL_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_PERIDOT_GEM",
+    "output": "FINE_PERIDOT_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_RUBY_GEM",
+    "output": "FINE_RUBY_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_RUBY_GEM",
+    "output": "POWER_TALISMAN",
+    "ratio": 45
+  },
+  {
+    "input": "FLAWED_SAPPHIRE_GEM",
+    "output": "FINE_SAPPHIRE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLAWED_TOPAZ_GEM",
+    "output": "FINE_TOPAZ_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "FLINT",
+    "output": "ENCHANTED_FLINT",
+    "ratio": 160
+  },
+  {
+    "input": "GHAST_TEAR",
+    "output": "ENCHANTED_GHAST_TEAR",
+    "ratio": 5
+  },
+  {
+    "input": "GLACITE",
+    "output": "ENCHANTED_GLACITE",
+    "ratio": 160
+  },
+  {
+    "input": "GLASS",
+    "output": "THIN_GLASS",
+    "ratio": 6
+  },
+  {
+    "input": "GLOWSTONE_DUST",
+    "output": "ENCHANTED_GLOWSTONE_DUST",
+    "ratio": 160
+  },
+  {
+    "input": "GLOWSTONE_DUST",
+    "output": "GLOWSTONE",
+    "ratio": 4
+  },
+  {
+    "input": "GOLD_INGOT",
+    "output": "GOLD_BLOCK",
+    "ratio": 9
+  },
+  {
+    "input": "GOLD_INGOT",
+    "output": "GOLD_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "GOLD_INGOT",
+    "output": "GOLD_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "GOLD_INGOT",
+    "output": "GOLD_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "GOLD_INGOT",
+    "output": "GOLD_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "GOLD_INGOT",
+    "output": "GOLD_PLATE",
+    "ratio": 2
+  },
+  {
+    "input": "GOLEM_POPPY",
+    "output": "FLOWER_OF_TRUTH",
+    "ratio": 9
+  },
+  {
+    "input": "HALF_EATEN_CARROT",
+    "output": "NEARLY_WHOLE_CARROT",
+    "ratio": 80
+  },
+  {
+    "input": "HARD_STONE",
+    "output": "ENCHANTED_HARD_STONE",
+    "ratio": 576
+  },
+  {
+    "input": "HEMOGLASS",
+    "output": "HEMOBOMB",
+    "ratio": 15
+  },
+  {
+    "input": "HEMOVIBE",
+    "output": "BLOOD_DONOR_TALISMAN",
+    "ratio": 108
+  },
+  {
+    "input": "HEMOVIBE",
+    "output": "HEMOGLASS",
+    "ratio": 160
+  },
+  {
+    "input": "HOLY_FRAGMENT",
+    "output": "HOLY_DRAGON_BOOTS",
+    "ratio": 40
+  },
+  {
+    "input": "HOLY_FRAGMENT",
+    "output": "HOLY_DRAGON_CHESTPLATE",
+    "ratio": 80
+  },
+  {
+    "input": "HOLY_FRAGMENT",
+    "output": "HOLY_DRAGON_HELMET",
+    "ratio": 50
+  },
+  {
+    "input": "HOLY_FRAGMENT",
+    "output": "HOLY_DRAGON_LEGGINGS",
+    "ratio": 70
+  },
+  {
+    "input": "ICE",
+    "output": "ENCHANTED_ICE",
+    "ratio": 160
+  },
+  {
+    "input": "INK_SACK",
+    "output": "ENCHANTED_INK_SACK",
+    "ratio": 80
+  },
+  {
+    "input": "INK_SACK",
+    "output": "SQUID_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "INK_SACK-3",
+    "output": "ENCHANTED_COCOA",
+    "ratio": 160
+  },
+  {
+    "input": "INK_SACK-4",
+    "output": "LAPIS_BLOCK",
+    "ratio": 9
+  },
+  {
+    "input": "IQ_POINT",
+    "output": "TWO_IQ_POINT",
+    "ratio": 9
+  },
+  {
+    "input": "IRON_BLOCK",
+    "output": "GOLEM_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "IRON_BLOCK",
+    "output": "MINER_OUTFIT_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "IRON_BLOCK",
+    "output": "MINER_OUTFIT_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "IRON_BLOCK",
+    "output": "MINER_OUTFIT_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "IRON_BLOCK",
+    "output": "MINER_OUTFIT_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "BUCKET",
+    "ratio": 3
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "CAULDRON_ITEM",
+    "ratio": 7
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "IRON_BLOCK",
+    "ratio": 9
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "IRON_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "IRON_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "IRON_DOOR",
+    "ratio": 2
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "IRON_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "IRON_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "IRON_PLATE",
+    "ratio": 2
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "IRON_TRAPDOOR",
+    "ratio": 4
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "MINECART",
+    "ratio": 5
+  },
+  {
+    "input": "IRON_INGOT",
+    "output": "SHEARS",
+    "ratio": 2
+  },
+  {
+    "input": "JERRY_TALISMAN_BLUE",
+    "output": "JERRY_TALISMAN_PURPLE",
+    "ratio": 5
+  },
+  {
+    "input": "JERRY_TALISMAN_GREEN",
+    "output": "JERRY_TALISMAN_BLUE",
+    "ratio": 5
+  },
+  {
+    "input": "JERRY_TALISMAN_PURPLE",
+    "output": "JERRY_TALISMAN_GOLDEN",
+    "ratio": 5
+  },
+  {
+    "input": "KUUDRA_BURNING_TIER_KEY",
+    "output": "KUUDRA_FIERY_TIER_KEY",
+    "ratio": 4
+  },
+  {
+    "input": "KUUDRA_FIERY_TIER_KEY",
+    "output": "KUUDRA_INFERNAL_TIER_KEY",
+    "ratio": 4
+  },
+  {
+    "input": "KUUDRA_HOT_TIER_KEY",
+    "output": "KUUDRA_BURNING_TIER_KEY",
+    "ratio": 4
+  },
+  {
+    "input": "KUUDRA_TIER_KEY",
+    "output": "KUUDRA_HOT_TIER_KEY",
+    "ratio": 4
+  },
+  {
+    "input": "LEATHER",
+    "output": "LEATHER_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "LEATHER",
+    "output": "LEATHER_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "LEATHER",
+    "output": "LEATHER_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "LEATHER",
+    "output": "LEATHER_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "LEATHER",
+    "output": "SMALL_BACKPACK",
+    "ratio": 80
+  },
+  {
+    "input": "LIVING_METAL",
+    "output": "LM_EGG_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "LIVING_METAL",
+    "output": "LM_EGG_CAP",
+    "ratio": 5
+  },
+  {
+    "input": "LIVING_METAL",
+    "output": "LM_EGG_CHEST",
+    "ratio": 8
+  },
+  {
+    "input": "LIVING_METAL",
+    "output": "LM_EGG_LEGS",
+    "ratio": 7
+  },
+  {
+    "input": "LOG",
+    "output": "SMALL_ENCHANTED_CHEST",
+    "ratio": 64
+  },
+  {
+    "input": "LUSH_BERBERIS",
+    "output": "ENCHANTED_LUSH_BERBERIS",
+    "ratio": 160
+  },
+  {
+    "input": "LUSH_BERBERIS",
+    "output": "LUSH_TALISMAN",
+    "ratio": 576
+  },
+  {
+    "input": "MAGMA_CREAM",
+    "output": "ENCHANTED_MAGMA_CREAM",
+    "ratio": 160
+  },
+  {
+    "input": "MAGMA_FISH",
+    "output": "MAGMA_FISH_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "MAGMA_FISH",
+    "output": "MAGMA_FISH_SILVER",
+    "ratio": 80
+  },
+  {
+    "input": "MAGMA_FISH_GOLD",
+    "output": "MAGMA_FISH_DIAMOND",
+    "ratio": 20
+  },
+  {
+    "input": "MAGMA_FISH_SILVER",
+    "output": "MAGMA_FISH_GOLD",
+    "ratio": 80
+  },
+  {
+    "input": "MAGMA_LORD_FRAGMENT",
+    "output": "MAGMA_LORD_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "MAGMA_LORD_FRAGMENT",
+    "output": "MAGMA_LORD_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "MAGMA_LORD_FRAGMENT",
+    "output": "MAGMA_LORD_GAUNTLET",
+    "ratio": 6
+  },
+  {
+    "input": "MAGMA_LORD_FRAGMENT",
+    "output": "MAGMA_LORD_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "MAGMA_LORD_FRAGMENT",
+    "output": "MAGMA_LORD_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "MASTER_SKULL_TIER_1",
+    "output": "MASTER_SKULL_TIER_2",
+    "ratio": 4
+  },
+  {
+    "input": "MASTER_SKULL_TIER_2",
+    "output": "MASTER_SKULL_TIER_3",
+    "ratio": 4
+  },
+  {
+    "input": "MASTER_SKULL_TIER_3",
+    "output": "MASTER_SKULL_TIER_4",
+    "ratio": 4
+  },
+  {
+    "input": "MASTER_SKULL_TIER_4",
+    "output": "MASTER_SKULL_TIER_5",
+    "ratio": 4
+  },
+  {
+    "input": "MASTER_SKULL_TIER_5",
+    "output": "MASTER_SKULL_TIER_6",
+    "ratio": 4
+  },
+  {
+    "input": "MASTER_SKULL_TIER_6",
+    "output": "MASTER_SKULL_TIER_7",
+    "ratio": 4
+  },
+  {
+    "input": "MELON",
+    "output": "ENCHANTED_MELON",
+    "ratio": 160
+  },
+  {
+    "input": "MELON",
+    "output": "MELON_BLOCK",
+    "ratio": 9
+  },
+  {
+    "input": "METAL_HEART",
+    "output": "BLUETOOTH_RING",
+    "ratio": 32
+  },
+  {
+    "input": "MIMIC_FRAGMENT",
+    "output": "LESSER_ORB_OF_HEALING",
+    "ratio": 9
+  },
+  {
+    "input": "MIRRORED_WOOD",
+    "output": "MIRRORED_STICK",
+    "ratio": 2
+  },
+  {
+    "input": "MITE_GEL",
+    "output": "MIXED_MITE_GEL",
+    "ratio": 160
+  },
+  {
+    "input": "MITHRIL_ORE",
+    "output": "ENCHANTED_MITHRIL",
+    "ratio": 160
+  },
+  {
+    "input": "MUTTON",
+    "output": "ENCHANTED_MUTTON",
+    "ratio": 160
+  },
+  {
+    "input": "MYCEL",
+    "output": "ENCHANTED_MYCELIUM",
+    "ratio": 160
+  },
+  {
+    "input": "NETHER_BRICK_ITEM",
+    "output": "NETHER_BRICK",
+    "ratio": 4
+  },
+  {
+    "input": "NETHER_STALK",
+    "output": "ENCHANTED_NETHER_STALK",
+    "ratio": 160
+  },
+  {
+    "input": "NETHER_STALK",
+    "output": "POTION_AFFINITY_TALISMAN",
+    "ratio": 144
+  },
+  {
+    "input": "NETHERRACK",
+    "output": "ENCHANTED_NETHERRACK",
+    "ratio": 160
+  },
+  {
+    "input": "NULL_SPHERE",
+    "output": "SOULFLOW_PILE",
+    "ratio": 90
+  },
+  {
+    "input": "OBSIDIAN",
+    "output": "ENCHANTED_OBSIDIAN",
+    "ratio": 160
+  },
+  {
+    "input": "OBSIDIAN",
+    "output": "GRAVITY_TALISMAN",
+    "ratio": 144
+  },
+  {
+    "input": "OLD_FRAGMENT",
+    "output": "OLD_DRAGON_BOOTS",
+    "ratio": 40
+  },
+  {
+    "input": "OLD_FRAGMENT",
+    "output": "OLD_DRAGON_CHESTPLATE",
+    "ratio": 80
+  },
+  {
+    "input": "OLD_FRAGMENT",
+    "output": "OLD_DRAGON_HELMET",
+    "ratio": 50
+  },
+  {
+    "input": "OLD_FRAGMENT",
+    "output": "OLD_DRAGON_LEGGINGS",
+    "ratio": 70
+  },
+  {
+    "input": "ORB_OF_ENERGY",
+    "output": "PULSE_RING",
+    "ratio": 256
+  },
+  {
+    "input": "POISONOUS_POTATO",
+    "output": "ENCHANTED_POISONOUS_POTATO",
+    "ratio": 160
+  },
+  {
+    "input": "POISONOUS_POTATO",
+    "output": "VACCINE_TALISMAN",
+    "ratio": 9
+  },
+  {
+    "input": "PORK",
+    "output": "ENCHANTED_PORK",
+    "ratio": 160
+  },
+  {
+    "input": "POTATO_ITEM",
+    "output": "ENCHANTED_POTATO",
+    "ratio": 160
+  },
+  {
+    "input": "PRISMARINE_CRYSTALS",
+    "output": "ENCHANTED_PRISMARINE_CRYSTALS",
+    "ratio": 80
+  },
+  {
+    "input": "PRISMARINE_CRYSTALS",
+    "output": "SEA_LANTERN_HAT",
+    "ratio": 5
+  },
+  {
+    "input": "PRISMARINE_SHARD",
+    "output": "ENCHANTED_PRISMARINE_SHARD",
+    "ratio": 80
+  },
+  {
+    "input": "PRISMARINE_SHARD",
+    "output": "PRISMARINE",
+    "ratio": 4
+  },
+  {
+    "input": "PRISMARINE_SHARD",
+    "output": "PRISMARINE-1",
+    "ratio": 9
+  },
+  {
+    "input": "PROTECTOR_FRAGMENT",
+    "output": "PROTECTOR_DRAGON_BOOTS",
+    "ratio": 40
+  },
+  {
+    "input": "PROTECTOR_FRAGMENT",
+    "output": "PROTECTOR_DRAGON_CHESTPLATE",
+    "ratio": 80
+  },
+  {
+    "input": "PROTECTOR_FRAGMENT",
+    "output": "PROTECTOR_DRAGON_HELMET",
+    "ratio": 50
+  },
+  {
+    "input": "PROTECTOR_FRAGMENT",
+    "output": "PROTECTOR_DRAGON_LEGGINGS",
+    "ratio": 70
+  },
+  {
+    "input": "PUMPKIN",
+    "output": "ENCHANTED_PUMPKIN",
+    "ratio": 160
+  },
+  {
+    "input": "QUARTZ",
+    "output": "ENCHANTED_QUARTZ",
+    "ratio": 160
+  },
+  {
+    "input": "QUARTZ",
+    "output": "QUARTZ_BLOCK",
+    "ratio": 4
+  },
+  {
+    "input": "RABBIT",
+    "output": "ENCHANTED_RABBIT",
+    "ratio": 160
+  },
+  {
+    "input": "RABBIT_FOOT",
+    "output": "ENCHANTED_RABBIT_FOOT",
+    "ratio": 160
+  },
+  {
+    "input": "RABBIT_HIDE",
+    "output": "LEATHER",
+    "ratio": 4
+  },
+  {
+    "input": "RAW_BEEF",
+    "output": "COW_HEAD",
+    "ratio": 8
+  },
+  {
+    "input": "RAW_BEEF",
+    "output": "ENCHANTED_RAW_BEEF",
+    "ratio": 160
+  },
+  {
+    "input": "RAW_CHICKEN",
+    "output": "ENCHANTED_RAW_CHICKEN",
+    "ratio": 160
+  },
+  {
+    "input": "RAW_FISH",
+    "output": "ENCHANTED_RAW_FISH",
+    "ratio": 160
+  },
+  {
+    "input": "RAW_FISH",
+    "output": "FISH_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "RAW_FISH",
+    "output": "MINNOW_BAIT",
+    "ratio": 2
+  },
+  {
+    "input": "RAW_FISH-1",
+    "output": "ENCHANTED_RAW_SALMON",
+    "ratio": 160
+  },
+  {
+    "input": "RAW_FISH-1",
+    "output": "SALMON_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "RAW_FISH-2",
+    "output": "CLOWNFISH_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "RAW_FISH-2",
+    "output": "ENCHANTED_CLOWNFISH",
+    "ratio": 160
+  },
+  {
+    "input": "RAW_FISH-3",
+    "output": "ENCHANTED_PUFFERFISH",
+    "ratio": 160
+  },
+  {
+    "input": "RAW_FISH-3",
+    "output": "PUFFERFISH_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "RAW_SOULFLOW",
+    "output": "SOULFLOW",
+    "ratio": 160
+  },
+  {
+    "input": "RED_MUSHROOM",
+    "output": "ENCHANTED_RED_MUSHROOM",
+    "ratio": 160
+  },
+  {
+    "input": "RED_MUSHROOM",
+    "output": "HUGE_MUSHROOM_2",
+    "ratio": 9
+  },
+  {
+    "input": "RED_MUSHROOM",
+    "output": "MUSHROOM_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "RED_MUSHROOM",
+    "output": "MUSHROOM_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "RED_MUSHROOM",
+    "output": "MUSHROOM_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "RED_MUSHROOM",
+    "output": "MUSHROOM_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "RED_ROSE",
+    "output": "ENCHANTED_POPPY",
+    "ratio": 576
+  },
+  {
+    "input": "REDSTONE",
+    "output": "REDSTONE_BLOCK",
+    "ratio": 9
+  },
+  {
+    "input": "REFINED_MINERAL",
+    "output": "MINERAL_TALISMAN",
+    "ratio": 9
+  },
+  {
+    "input": "REKINDLED_EMBER_FRAGMENT",
+    "output": "REKINDLED_EMBER_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "REKINDLED_EMBER_FRAGMENT",
+    "output": "REKINDLED_EMBER_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "REKINDLED_EMBER_FRAGMENT",
+    "output": "REKINDLED_EMBER_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "REKINDLED_EMBER_FRAGMENT",
+    "output": "REKINDLED_EMBER_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "ROTTEN_FLESH",
+    "output": "ENCHANTED_ROTTEN_FLESH",
+    "ratio": 160
+  },
+  {
+    "input": "ROTTEN_FLESH",
+    "output": "ZOMBIE_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "ROUGH_AMBER_GEM",
+    "output": "FLAWED_AMBER_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_AMETHYST_GEM",
+    "output": "FLAWED_AMETHYST_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_AQUAMARINE_GEM",
+    "output": "FLAWED_AQUAMARINE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_CITRINE_GEM",
+    "output": "FLAWED_CITRINE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_JADE_GEM",
+    "output": "FLAWED_JADE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_JASPER_GEM",
+    "output": "FLAWED_JASPER_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_ONYX_GEM",
+    "output": "FLAWED_ONYX_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_OPAL_GEM",
+    "output": "FLAWED_OPAL_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_PERIDOT_GEM",
+    "output": "FLAWED_PERIDOT_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_RUBY_GEM",
+    "output": "FLAWED_RUBY_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_SAPPHIRE_GEM",
+    "output": "FLAWED_SAPPHIRE_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "ROUGH_TOPAZ_GEM",
+    "output": "FLAWED_TOPAZ_GEM",
+    "ratio": 80
+  },
+  {
+    "input": "SAND",
+    "output": "ENCHANTED_SAND",
+    "ratio": 160
+  },
+  {
+    "input": "SAND",
+    "output": "SANDSTONE",
+    "ratio": 4
+  },
+  {
+    "input": "SAND-1",
+    "output": "ENCHANTED_RED_SAND",
+    "ratio": 160
+  },
+  {
+    "input": "SAND-1",
+    "output": "RED_SANDSTONE",
+    "ratio": 4
+  },
+  {
+    "input": "SCARF_STUDIES",
+    "output": "SCARF_THESIS",
+    "ratio": 4
+  },
+  {
+    "input": "SCARF_THESIS",
+    "output": "SCARF_GRIMOIRE",
+    "ratio": 4
+  },
+  {
+    "input": "SCYTHE_BLADE",
+    "output": "REAPER_ORB",
+    "ratio": 8
+  },
+  {
+    "input": "SEEDS",
+    "output": "ENCHANTED_SEEDS",
+    "ratio": 160
+  },
+  {
+    "input": "SHAME_CRUX",
+    "output": "CRUX_TALISMAN_1",
+    "ratio": 8
+  },
+  {
+    "input": "SHARK_FIN",
+    "output": "ENCHANTED_SHARK_FIN",
+    "ratio": 160
+  },
+  {
+    "input": "SHARK_FIN",
+    "output": "SHARK_BAIT",
+    "ratio": 2
+  },
+  {
+    "input": "SLIME_BALL",
+    "output": "ENCHANTED_SLIME_BALL",
+    "ratio": 160
+  },
+  {
+    "input": "SLIME_BALL",
+    "output": "SLIME_BLOCK",
+    "ratio": 9
+  },
+  {
+    "input": "SLIME_BALL",
+    "output": "SLIME_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "SNOW_BALL",
+    "output": "SNOW_BLOCK",
+    "ratio": 4
+  },
+  {
+    "input": "SNOW_BLOCK",
+    "output": "ENCHANTED_SNOW_BLOCK",
+    "ratio": 160
+  },
+  {
+    "input": "SNOW_BLOCK",
+    "output": "SNOW",
+    "ratio": 3
+  },
+  {
+    "input": "SORROW",
+    "output": "SORROW_BOOTS",
+    "ratio": 12
+  },
+  {
+    "input": "SORROW",
+    "output": "SORROW_CHESTPLATE",
+    "ratio": 24
+  },
+  {
+    "input": "SORROW",
+    "output": "SORROW_HELMET",
+    "ratio": 15
+  },
+  {
+    "input": "SORROW",
+    "output": "SORROW_LEGGINGS",
+    "ratio": 21
+  },
+  {
+    "input": "SPECKLED_MELON",
+    "output": "ENCHANTED_GLISTERING_MELON",
+    "ratio": 256
+  },
+  {
+    "input": "SPIDER_EYE",
+    "output": "ENCHANTED_SPIDER_EYE",
+    "ratio": 160
+  },
+  {
+    "input": "SPIDER_EYE",
+    "output": "SPIDER_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "SPIRIT_LEAP",
+    "output": "ASPIRING_LEAP",
+    "ratio": 80
+  },
+  {
+    "input": "SPONGE",
+    "output": "ENCHANTED_SPONGE",
+    "ratio": 40
+  },
+  {
+    "input": "SPONGE",
+    "output": "SEA_CREATURE_TALISMAN",
+    "ratio": 18
+  },
+  {
+    "input": "STEP-1",
+    "output": "SANDSTONE-1",
+    "ratio": 2
+  },
+  {
+    "input": "STEP-5",
+    "output": "SMOOTH_BRICK-3",
+    "ratio": 2
+  },
+  {
+    "input": "STEP-7",
+    "output": "QUARTZ_BLOCK-1",
+    "ratio": 2
+  },
+  {
+    "input": "STICK",
+    "output": "LADDER",
+    "ratio": 2.3333333333333335
+  },
+  {
+    "input": "STONE",
+    "output": "STONE_PLATE",
+    "ratio": 2
+  },
+  {
+    "input": "STONE_SLAB2",
+    "output": "RED_SANDSTONE-1",
+    "ratio": 2
+  },
+  {
+    "input": "STRING",
+    "output": "ENCHANTED_STRING",
+    "ratio": 160
+  },
+  {
+    "input": "STRING",
+    "output": "WEB",
+    "ratio": 9
+  },
+  {
+    "input": "STRONG_FRAGMENT",
+    "output": "STRONG_DRAGON_BOOTS",
+    "ratio": 40
+  },
+  {
+    "input": "STRONG_FRAGMENT",
+    "output": "STRONG_DRAGON_CHESTPLATE",
+    "ratio": 80
+  },
+  {
+    "input": "STRONG_FRAGMENT",
+    "output": "STRONG_DRAGON_HELMET",
+    "ratio": 50
+  },
+  {
+    "input": "STRONG_FRAGMENT",
+    "output": "STRONG_DRAGON_LEGGINGS",
+    "ratio": 70
+  },
+  {
+    "input": "SUGAR_CANE",
+    "output": "ENCHANTED_PAPER",
+    "ratio": 192
+  },
+  {
+    "input": "SUGAR_CANE",
+    "output": "ENCHANTED_SUGAR",
+    "ratio": 160
+  },
+  {
+    "input": "SUGAR_CANE",
+    "output": "SPEED_TALISMAN",
+    "ratio": 108
+  },
+  {
+    "input": "SULPHUR",
+    "output": "CREEPER_HAT",
+    "ratio": 8
+  },
+  {
+    "input": "SULPHUR",
+    "output": "ENCHANTED_GUNPOWDER",
+    "ratio": 160
+  },
+  {
+    "input": "SULPHUR_ORE",
+    "output": "ENCHANTED_SULPHUR",
+    "ratio": 160
+  },
+  {
+    "input": "SUPER_EGG",
+    "output": "OMEGA_EGG",
+    "ratio": 9
+  },
+  {
+    "input": "SUPERIOR_FRAGMENT",
+    "output": "SUPERIOR_DRAGON_BOOTS",
+    "ratio": 40
+  },
+  {
+    "input": "SUPERIOR_FRAGMENT",
+    "output": "SUPERIOR_DRAGON_CHESTPLATE",
+    "ratio": 80
+  },
+  {
+    "input": "SUPERIOR_FRAGMENT",
+    "output": "SUPERIOR_DRAGON_HELMET",
+    "ratio": 50
+  },
+  {
+    "input": "SUPERIOR_FRAGMENT",
+    "output": "SUPERIOR_DRAGON_LEGGINGS",
+    "ratio": 70
+  },
+  {
+    "input": "THUNDER_SHARDS",
+    "output": "THUNDER_BOOTS",
+    "ratio": 4
+  },
+  {
+    "input": "THUNDER_SHARDS",
+    "output": "THUNDER_CHESTPLATE",
+    "ratio": 8
+  },
+  {
+    "input": "THUNDER_SHARDS",
+    "output": "THUNDER_HELMET",
+    "ratio": 5
+  },
+  {
+    "input": "THUNDER_SHARDS",
+    "output": "THUNDER_LEGGINGS",
+    "ratio": 7
+  },
+  {
+    "input": "THUNDER_SHARDS",
+    "output": "THUNDERBOLT_NECKLACE",
+    "ratio": 5
+  },
+  {
+    "input": "TITANIUM_ORE",
+    "output": "ENCHANTED_TITANIUM",
+    "ratio": 160
+  },
+  {
+    "input": "TREASURE_RING",
+    "output": "TREASURE_ARTIFACT",
+    "ratio": 9
+  },
+  {
+    "input": "TREASURE_TALISMAN",
+    "output": "TREASURE_RING",
+    "ratio": 8
+  },
+  {
+    "input": "TUNGSTEN",
+    "output": "ENCHANTED_TUNGSTEN",
+    "ratio": 160
+  },
+  {
+    "input": "UMBER",
+    "output": "ENCHANTED_UMBER",
+    "ratio": 160
+  },
+  {
+    "input": "UNSTABLE_FRAGMENT",
+    "output": "UNSTABLE_DRAGON_BOOTS",
+    "ratio": 40
+  },
+  {
+    "input": "UNSTABLE_FRAGMENT",
+    "output": "UNSTABLE_DRAGON_CHESTPLATE",
+    "ratio": 80
+  },
+  {
+    "input": "UNSTABLE_FRAGMENT",
+    "output": "UNSTABLE_DRAGON_HELMET",
+    "ratio": 50
+  },
+  {
+    "input": "UNSTABLE_FRAGMENT",
+    "output": "UNSTABLE_DRAGON_LEGGINGS",
+    "ratio": 70
+  },
+  {
+    "input": "VAMPIRIC_MELON",
+    "output": "ENCHANTED_VAMPIRIC_MELON",
+    "ratio": 160
+  },
+  {
+    "input": "VAMPIRIC_MELON",
+    "output": "HEALING_MELON",
+    "ratio": 12
+  },
+  {
+    "input": "WATER_LILY",
+    "output": "HEALING_TALISMAN",
+    "ratio": 144
+  },
+  {
+    "input": "WEREWOLF_SKIN",
+    "output": "WEREWOLF_BOOTS",
+    "ratio": 16
+  },
+  {
+    "input": "WEREWOLF_SKIN",
+    "output": "WEREWOLF_CHESTPLATE",
+    "ratio": 32
+  },
+  {
+    "input": "WEREWOLF_SKIN",
+    "output": "WEREWOLF_HELMET",
+    "ratio": 20
+  },
+  {
+    "input": "WEREWOLF_SKIN",
+    "output": "WEREWOLF_LEGGINGS",
+    "ratio": 28
+  },
+  {
+    "input": "WHEAT",
+    "output": "BREAD",
+    "ratio": 3
+  },
+  {
+    "input": "WHEAT",
+    "output": "ENCHANTED_BREAD",
+    "ratio": 60
+  },
+  {
+    "input": "WHEAT",
+    "output": "ENCHANTED_WHEAT",
+    "ratio": 160
+  },
+  {
+    "input": "WHEAT",
+    "output": "HAY_BLOCK",
+    "ratio": 9
+  },
+  {
+    "input": "WILTED_BERBERIS",
+    "output": "BERBERIS_BLOWGUN",
+    "ratio": 60
+  },
+  {
+    "input": "WILTED_BERBERIS",
+    "output": "BERBERIS_FUEL_INJECTOR",
+    "ratio": 336
+  },
+  {
+    "input": "WILTED_BERBERIS",
+    "output": "WILTED_BERBERIS_BUNCH",
+    "ratio": 20
+  },
+  {
+    "input": "WISE_FRAGMENT",
+    "output": "WISE_DRAGON_BOOTS",
+    "ratio": 40
+  },
+  {
+    "input": "WISE_FRAGMENT",
+    "output": "WISE_DRAGON_CHESTPLATE",
+    "ratio": 80
+  },
+  {
+    "input": "WISE_FRAGMENT",
+    "output": "WISE_DRAGON_HELMET",
+    "ratio": 50
+  },
+  {
+    "input": "WISE_FRAGMENT",
+    "output": "WISE_DRAGON_LEGGINGS",
+    "ratio": 70
+  },
+  {
+    "input": "WITHER_CATALYST",
+    "output": "CATACOMBS_EXPERT_RING",
+    "ratio": 24
+  },
+  {
+    "input": "WOOD",
+    "output": "BOAT",
+    "ratio": 5
+  },
+  {
+    "input": "WOOD",
+    "output": "CHEST",
+    "ratio": 8
+  },
+  {
+    "input": "WOOD",
+    "output": "TRAP_DOOR",
+    "ratio": 3
+  },
+  {
+    "input": "WOOD",
+    "output": "WOOD_DOOR",
+    "ratio": 2
+  },
+  {
+    "input": "WOOD",
+    "output": "WOOD_PLATE",
+    "ratio": 2
+  },
+  {
+    "input": "WOOD",
+    "output": "WORKBENCH",
+    "ratio": 4
+  },
+  {
+    "input": "WOOD-1",
+    "output": "SPRUCE_DOOR_ITEM",
+    "ratio": 2
+  },
+  {
+    "input": "WOOD-2",
+    "output": "BIRCH_DOOR_ITEM",
+    "ratio": 2
+  },
+  {
+    "input": "WOOD-3",
+    "output": "JUNGLE_DOOR_ITEM",
+    "ratio": 2
+  },
+  {
+    "input": "WOOD-4",
+    "output": "ACACIA_DOOR_ITEM",
+    "ratio": 2
+  },
+  {
+    "input": "WOOD-5",
+    "output": "DARK_OAK_DOOR_ITEM",
+    "ratio": 2
+  },
+  {
+    "input": "WOOL",
+    "output": "ENCHANTED_WOOL",
+    "ratio": 160
+  },
+  {
+    "input": "X",
+    "output": "SYNTHESIZER_V1",
+    "ratio": 320
+  },
+  {
+    "input": "YELLOW_FLOWER",
+    "output": "ENCHANTED_DANDELION",
+    "ratio": 160
+  },
+  {
+    "input": "YOUNG_FRAGMENT",
+    "output": "YOUNG_DRAGON_BOOTS",
+    "ratio": 40
+  },
+  {
+    "input": "YOUNG_FRAGMENT",
+    "output": "YOUNG_DRAGON_CHESTPLATE",
+    "ratio": 80
+  },
+  {
+    "input": "YOUNG_FRAGMENT",
+    "output": "YOUNG_DRAGON_HELMET",
+    "ratio": 50
+  },
+  {
+    "input": "YOUNG_FRAGMENT",
+    "output": "YOUNG_DRAGON_LEGGINGS",
+    "ratio": 70
+  }
+]

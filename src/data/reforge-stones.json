@@ -1,0 +1,330 @@
+{
+  "ambered": {
+    "stone": "AMBER_MATERIAL",
+    "name": "Ambered"
+  },
+  "ancient": {
+    "stone": "PRECURSOR_GEAR",
+    "name": "Ancient"
+  },
+  "auspicious": {
+    "stone": "ROCK_GEMSTONE",
+    "name": "Auspicious"
+  },
+  "beady": {
+    "stone": "BEADY_EYES",
+    "name": "Beady"
+  },
+  "blazing": {
+    "stone": "BLAZEN_SPHERE",
+    "name": "Blazing"
+  },
+  "blessed": {
+    "stone": "BLESSED_FRUIT",
+    "name": "Blessed"
+  },
+  "blood-soaked": {
+    "stone": "PRESUMED_GALLON_OF_RED_PAINT",
+    "name": "Blood-Soaked"
+  },
+  "bloodshot": {
+    "stone": "SHRIVELED_CORNEA",
+    "name": "Bloodshot"
+  },
+  "blooming": {
+    "stone": "FLOWERING_BOUQUET",
+    "name": "Blooming"
+  },
+  "bountiful": {
+    "stone": "GOLDEN_BALL",
+    "name": "Bountiful"
+  },
+  "bulky": {
+    "stone": "BULKY_STONE",
+    "name": "Bulky"
+  },
+  "bustling": {
+    "stone": "SKYMART_BROCHURE",
+    "name": "Bustling"
+  },
+  "buzzing": {
+    "stone": "CLIPPED_WINGS",
+    "name": "Buzzing"
+  },
+  "calcified": {
+    "stone": "CALCIFIED_HEART",
+    "name": "Calcified"
+  },
+  "candied": {
+    "stone": "CANDY_CORN",
+    "name": "Candied"
+  },
+  "chomp": {
+    "stone": "KUUDRA_MANDIBLE",
+    "name": "Chomp"
+  },
+  "coldfused": {
+    "stone": "ENTROPY_SUPPRESSOR",
+    "name": "Coldfused"
+  },
+  "cubic": {
+    "stone": "MOLTEN_CUBE",
+    "name": "Cubic"
+  },
+  "deep fried": {
+    "stone": "HASHBROWN",
+    "name": "Deep Fried"
+  },
+  "dimensional": {
+    "stone": "TITANIUM_TESSERACT",
+    "name": "Dimensional"
+  },
+  "dirty": {
+    "stone": "DIRT_BOTTLE",
+    "name": "Dirty"
+  },
+  "earthy": {
+    "stone": "LARGE_WALNUT",
+    "name": "Earthy"
+  },
+  "empowered": {
+    "stone": "SADAN_BROOCH",
+    "name": "Empowered"
+  },
+  "erudite": {
+    "stone": "DAEDALUS_NOTES",
+    "name": "Erudite"
+  },
+  "fabled": {
+    "stone": "DRAGON_CLAW",
+    "name": "Fabled"
+  },
+  "fanged": {
+    "stone": "FULL_JAW_FANGING_KIT",
+    "name": "Fanged"
+  },
+  "festive": {
+    "stone": "FROZEN_BAUBLE",
+    "name": "Festive"
+  },
+  "fleet": {
+    "stone": "DIAMONITE",
+    "name": "Fleet"
+  },
+  "fortified": {
+    "stone": "METEOR_SHARD",
+    "name": "Fortified"
+  },
+  "fruitful": {
+    "stone": "ONYX",
+    "name": "Fruitful"
+  },
+  "giant": {
+    "stone": "GIANT_TOOTH",
+    "name": "Giant"
+  },
+  "gilded": {
+    "stone": "MIDAS_JEWEL",
+    "name": "Gilded"
+  },
+  "glacial": {
+    "stone": "FRIGID_HUSK",
+    "name": "Glacial"
+  },
+  "glistening": {
+    "stone": "SHINY_PRISM",
+    "name": "Glistening"
+  },
+  "greater spook": {
+    "stone": "BOO_STONE",
+    "name": "Greater Spook"
+  },
+  "groovy": {
+    "stone": "MANGROVE_GEM",
+    "name": "Groovy"
+  },
+  "headstrong": {
+    "stone": "SALMON_OPAL",
+    "name": "Headstrong"
+  },
+  "heated": {
+    "stone": "HOT_STUFF",
+    "name": "Heated"
+  },
+  "hyper": {
+    "stone": "ENDSTONE_GEODE",
+    "name": "Hyper"
+  },
+  "jaded": {
+    "stone": "JADERALD",
+    "name": "Jaded"
+  },
+  "jerry's": {
+    "stone": "JERRY_STONE",
+    "name": "Jerry's"
+  },
+  "loving": {
+    "stone": "RED_SCARF",
+    "name": "Loving"
+  },
+  "lucky": {
+    "stone": "LUCKY_DICE",
+    "name": "Lucky"
+  },
+  "lunar": {
+    "stone": "MOONSTONE",
+    "name": "Lunar"
+  },
+  "lustrous": {
+    "stone": "GLEAMING_CRYSTAL",
+    "name": "Lustrous"
+  },
+  "magnetic": {
+    "stone": "LAPIS_CRYSTAL",
+    "name": "Magnetic"
+  },
+  "mantid": {
+    "stone": "MANTID_CLAW",
+    "name": "Mantid"
+  },
+  "mithraic": {
+    "stone": "PURE_MITHRIL",
+    "name": "Mithraic"
+  },
+  "moil": {
+    "stone": "MOIL_LOG",
+    "name": "Moil"
+  },
+  "moonglade": {
+    "stone": "MOONGLADE_JEWEL",
+    "name": "Moonglade"
+  },
+  "mossy": {
+    "stone": "OVERGROWN_GRASS",
+    "name": "Mossy"
+  },
+  "necrotic": {
+    "stone": "NECROMANCER_BROOCH",
+    "name": "Necrotic"
+  },
+  "overpriced": {
+    "stone": "OVERPRICED_DRINK",
+    "name": "Overpriced"
+  },
+  "perfect": {
+    "stone": "DIAMOND_ATOM",
+    "name": "Perfect"
+  },
+  "pitchin'": {
+    "stone": "PITCHIN_KOI",
+    "name": "Pitchin'"
+  },
+  "precise": {
+    "stone": "OPTICAL_LENS",
+    "name": "Precise"
+  },
+  "refined": {
+    "stone": "REFINED_AMBER",
+    "name": "Refined"
+  },
+  "reinforced": {
+    "stone": "RARE_DIAMOND",
+    "name": "Reinforced"
+  },
+  "renowned": {
+    "stone": "DRAGON_HORN",
+    "name": "Renowned"
+  },
+  "ridiculous": {
+    "stone": "RED_NOSE",
+    "name": "Ridiculous"
+  },
+  "rooted": {
+    "stone": "BURROWING_SPORES",
+    "name": "Rooted"
+  },
+  "royal": {
+    "stone": "DWARVEN_TREASURE",
+    "name": "Royal"
+  },
+  "salty": {
+    "stone": "SALT_CUBE",
+    "name": "Salty"
+  },
+  "scraped": {
+    "stone": "POCKET_ICEBERG",
+    "name": "Scraped"
+  },
+  "snowy": {
+    "stone": "TERRY_SNOWGLOBE",
+    "name": "Snowy"
+  },
+  "spiked": {
+    "stone": "DRAGON_SCALE",
+    "name": "Spiked"
+  },
+  "spiritual": {
+    "stone": "SPIRIT_DECOY",
+    "name": "Spiritual"
+  },
+  "squeaky": {
+    "stone": "SQUEAKY_TOY",
+    "name": "Squeaky"
+  },
+  "stellar": {
+    "stone": "PETRIFIED_STARFALL",
+    "name": "Stellar"
+  },
+  "stiff": {
+    "stone": "HARDENED_WOOD",
+    "name": "Stiff"
+  },
+  "strengthened": {
+    "stone": "SEARING_STONE",
+    "name": "Strengthened"
+  },
+  "submerged": {
+    "stone": "DEEP_SEA_ORB",
+    "name": "Submerged"
+  },
+  "sunny": {
+    "stone": "SUNSTONE",
+    "name": "Sunny"
+  },
+  "suspicious": {
+    "stone": "SUSPICIOUS_VIAL",
+    "name": "Suspicious"
+  },
+  "thorny": {
+    "stone": "BLOOMING_THORNS",
+    "name": "Thorny"
+  },
+  "toil": {
+    "stone": "TOIL_LOG",
+    "name": "Toil"
+  },
+  "trashy": {
+    "stone": "OVERFLOWING_TRASH_CAN",
+    "name": "Trashy"
+  },
+  "treacherous": {
+    "stone": "RUSTY_ANCHOR",
+    "name": "Treacherous"
+  },
+  "undead": {
+    "stone": "PREMIUM_FLESH",
+    "name": "Undead"
+  },
+  "warped": {
+    "stone": "AOTE_STONE",
+    "name": "Warped"
+  },
+  "waxed": {
+    "stone": "BLAZE_WAX",
+    "name": "Waxed"
+  },
+  "withered": {
+    "stone": "WITHER_BLOOD",
+    "name": "Withered"
+  }
+}
