@@ -8,14 +8,17 @@
 import { Loader2, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Chip } from "@/components/Chip"
+import { Slider } from "@/components/ui/slider"
 import { SortChips, type SortOption } from "@/components/SortChips"
 import { cn } from "@/lib/utils"
+import { formatCoins } from "@/lib/format"
 import { rarityColorClass, rarityLabel } from "@/lib/rarity"
 
 import {
   EMPTY_FILTERS,
   hasActiveFilters,
   type ListingFilterState,
+  type PriceRange,
   type SortChain,
   type SortKey,
 } from "@/lib/listings"
@@ -31,6 +34,7 @@ const SORT_OPTIONS: SortOption<SortKey>[] = [
 export function ListingFilters({
   availableRarities,
   availableStars,
+  priceBounds,
   filters,
   onFiltersChange,
   sort,
@@ -41,6 +45,8 @@ export function ListingFilters({
 }: {
   availableRarities: string[]
   availableStars: number[]
+  /** Cheapest and priciest BIN in the unfiltered result set, for the slider's range. */
+  priceBounds: PriceRange | null
   filters: ListingFilterState
   onFiltersChange: (f: ListingFilterState) => void
   sort: SortChain
@@ -62,10 +68,41 @@ export function ListingFilters({
     onFiltersChange({ ...filters, stars: next })
   }
 
+  function onPriceChange([min, max]: number[]) {
+    if (!priceBounds) return
+    // Snapping back to the full span is the same as no filter — worth
+    // collapsing so "Clear" and dragging both ends out don't disagree about
+    // whether a filter is active.
+    if (min <= priceBounds.min && max >= priceBounds.max) {
+      onFiltersChange({ ...filters, priceRange: null })
+    } else {
+      onFiltersChange({ ...filters, priceRange: { min, max } })
+    }
+  }
+
   const active = hasActiveFilters(filters)
+  const priceValue = filters.priceRange ?? priceBounds
 
   return (
     <div className="space-y-2.5 rounded-lg border bg-muted/20 px-4 py-3">
+      {priceBounds && priceBounds.min < priceBounds.max && (
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="w-14 shrink-0 text-xs text-muted-foreground">Price</span>
+          <Slider
+            className="max-w-xs"
+            min={priceBounds.min}
+            max={priceBounds.max}
+            step={Math.max(1, Math.round((priceBounds.max - priceBounds.min) / 100))}
+            value={priceValue ? [priceValue.min, priceValue.max] : undefined}
+            onValueChange={onPriceChange}
+          />
+          <span className="shrink-0 text-xs tabular text-muted-foreground">
+            {formatCoins(priceValue?.min ?? priceBounds.min)} –{" "}
+            {formatCoins(priceValue?.max ?? priceBounds.max)}
+          </span>
+        </div>
+      )}
+
       {availableRarities.length > 1 && (
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="w-14 shrink-0 text-xs text-muted-foreground">Rarity</span>

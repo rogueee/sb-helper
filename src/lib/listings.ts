@@ -37,24 +37,35 @@ export const DEFAULT_SORT: SortChain = [{ key: "price", direction: "asc" }]
 /** Chip click semantics — see `toggleSortRule`. */
 export const toggleSort = toggleSortRule<SortKey>
 
+export interface PriceRange {
+  min: number
+  max: number
+}
+
 export interface ListingFilterState {
   /** Empty means "no rarity filter"; otherwise an allow-list of tiers. */
   rarities: Set<string>
   /** Empty means "no star filter"; otherwise an allow-list of star counts. */
   stars: Set<number>
+  /** Null means "no price filter"; otherwise an inclusive [min, max]. */
+  priceRange: PriceRange | null
 }
 
-export const EMPTY_FILTERS: ListingFilterState = { rarities: new Set(), stars: new Set() }
+export const EMPTY_FILTERS: ListingFilterState = {
+  rarities: new Set(),
+  stars: new Set(),
+  priceRange: null,
+}
 
 export function hasActiveFilters(f: ListingFilterState): boolean {
-  return f.rarities.size > 0 || f.stars.size > 0
+  return f.rarities.size > 0 || f.stars.size > 0 || f.priceRange !== null
 }
 
 function sortValue(p: PricedListing, key: SortKey): number | null {
   return key === "price" ? p.listing.price : p[key]
 }
 
-/** Applies the rarity/star filters, then orders by the sort keys. */
+/** Applies the rarity/star/price filters, then orders by the sort keys. */
 export function applyFiltersAndSort(
   results: PricedListing[],
   filters: ListingFilterState,
@@ -63,6 +74,11 @@ export function applyFiltersAndSort(
   const filtered = results.filter((p) => {
     if (filters.rarities.size > 0 && !filters.rarities.has(p.tier)) return false
     if (filters.stars.size > 0 && !filters.stars.has(p.stars)) return false
+    if (
+      filters.priceRange &&
+      (p.listing.price < filters.priceRange.min || p.listing.price > filters.priceRange.max)
+    )
+      return false
     return true
   })
 

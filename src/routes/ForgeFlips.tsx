@@ -19,7 +19,16 @@ import { BAZAAR_TAX_LABELS, type BazaarTaxTier } from "@/lib/fees"
 import { multiSort, type SortChainOf } from "@/lib/multiSort"
 import { formatCoins, formatExact, formatQuantity, formatSigned } from "@/lib/format"
 import { useLocalStorage } from "@/lib/useLocalStorage"
-import { cn } from "@/lib/utils"
+import { cn, onActivateKey } from "@/lib/utils"
+
+/**
+ * Forge listings quoting a 30s base time are HotM instant-upgrades (drills,
+ * chisels, fuel tanks) whose real turnaround is whatever the player is doing
+ * at the anvil, not a timer — profit/hour on them is not comparable to an
+ * actual forge queue, so they are dropped rather than shown as misleadingly
+ * cheap.
+ */
+const IGNORED_BASE_SECONDS = 30
 
 type ForgeSortKey = "profitPerHour" | "profit" | "materialCost" | "hours"
 
@@ -122,7 +131,7 @@ export function ForgeFlips() {
       quickForge,
       bazaarTax: tax,
       sellMode,
-    })
+    }).filter((f) => f.recipe.seconds !== IGNORED_BASE_SECONDS)
   }, [bazaar, lbin, names, quickForge, tax, sellMode])
 
   const visible = useMemo(() => {
@@ -255,25 +264,31 @@ export function ForgeFlips() {
               No forge recipes are profitable at current prices.
             </p>
           ) : (
-            <div className="rounded-lg border">
-              <div className="grid grid-cols-[1fr_auto_auto_auto_auto_2rem] items-center gap-4 border-b px-4 py-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                <span>Recipe</span>
-                <span className="text-right">Materials</span>
-                <span className="text-right">Sells for</span>
-                <span className="text-right">Profit</span>
-                <span className="text-right">Per hour</span>
-                <span />
-              </div>
-              {visible.map((flip) => (
-                <FlipRow
-                  key={flip.recipe.output}
-                  flip={flip}
-                  expanded={expanded === flip.recipe.output}
-                  onToggle={() =>
-                    setExpanded(expanded === flip.recipe.output ? null : flip.recipe.output)
-                  }
-                />
-              ))}
+            <div className="overflow-x-auto rounded-lg border">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    <th className="px-4 py-2 text-left font-medium">Recipe</th>
+                    <th className="px-2 py-2 text-right font-medium">Materials</th>
+                    <th className="px-2 py-2 text-right font-medium">Sells for</th>
+                    <th className="px-2 py-2 text-right font-medium">Profit</th>
+                    <th className="px-2 py-2 text-right font-medium">Per hour</th>
+                    <th className="w-8 px-4 py-2" />
+                  </tr>
+                </thead>
+                <tbody>
+                  {visible.map((flip) => (
+                    <FlipRow
+                      key={flip.recipe.output}
+                      flip={flip}
+                      expanded={expanded === flip.recipe.output}
+                      onToggle={() =>
+                        setExpanded(expanded === flip.recipe.output ? null : flip.recipe.output)
+                      }
+                    />
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </>
@@ -294,97 +309,111 @@ function FlipRow({
   const gain = flip.profit !== null && flip.profit > 0
 
   return (
-    <div className="border-b last:border-b-0">
-      <button
-        type="button"
+    <>
+      <tr
+        role="button"
+        tabIndex={0}
         onClick={onToggle}
-        className="grid w-full grid-cols-[1fr_auto_auto_auto_auto_2rem] items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-accent/50"
+        onKeyDown={onActivateKey(onToggle)}
+        className="cursor-pointer border-b text-sm hover:bg-accent/50"
       >
-        <span className="flex items-center gap-2 truncate">
-          <span className="truncate font-medium">{flip.name}</span>
-          {flip.recipe.count > 1 && (
-            <span className="shrink-0 text-xs text-muted-foreground">x{flip.recipe.count}</span>
-          )}
-          <Badge variant="outline" className="shrink-0">
-            {formatForgeTime(flip.hours)}
-          </Badge>
-          {/*
-            Which market the sale price came from changes how believable it is:
-            a bazaar instasell always fills, a lowest BIN is one listing deep.
-          */}
-          <span className="shrink-0 text-xs text-muted-foreground">
-            {flip.saleSource === "auction" ? "AH lbin" : "bazaar"}
+        <td className="w-full max-w-0 px-4 py-2.5">
+          <span className="flex items-center gap-2 truncate">
+            <span className="truncate font-medium">{flip.name}</span>
+            {flip.recipe.count > 1 && (
+              <span className="shrink-0 text-xs text-muted-foreground">x{flip.recipe.count}</span>
+            )}
+            <Badge variant="outline" className="shrink-0">
+              {formatForgeTime(flip.hours)}
+            </Badge>
+            {/*
+              Which market the sale price came from changes how believable it is:
+              a bazaar instasell always fills, a lowest BIN is one listing deep.
+            */}
+            <span className="shrink-0 text-xs text-muted-foreground">
+              {flip.saleSource === "auction" ? "AH lbin" : "bazaar"}
+            </span>
           </span>
-        </span>
-        <span className="text-right tabular text-muted-foreground" title={formatExact(flip.materialCost)}>
+        </td>
+        <td
+          className="px-2 py-2.5 text-right tabular text-muted-foreground"
+          title={formatExact(flip.materialCost)}
+        >
           {formatCoins(flip.materialCost)}
-        </span>
-        <span className="text-right tabular text-muted-foreground" title={formatExact(flip.saleNet)}>
+        </td>
+        <td
+          className="px-2 py-2.5 text-right tabular text-muted-foreground"
+          title={formatExact(flip.saleNet)}
+        >
           {formatCoins(flip.saleNet)}
-        </span>
-        <span
-          className={cn("text-right tabular", gain ? "text-gain" : "text-loss")}
+        </td>
+        <td
+          className={cn("px-2 py-2.5 text-right tabular", gain ? "text-gain" : "text-loss")}
           title={formatExact(flip.profit)}
         >
           {formatSigned(flip.profit)}
-        </span>
-        <span className={cn("text-right tabular", gain ? "text-gain" : "text-loss")}>
+        </td>
+        <td className={cn("px-2 py-2.5 text-right tabular", gain ? "text-gain" : "text-loss")}>
           {formatSigned(flip.profitPerHour)}
-        </span>
-        <ChevronDown
-          className={cn(
-            "size-4 text-muted-foreground transition-transform",
-            expanded && "rotate-180",
-          )}
-        />
-      </button>
+        </td>
+        <td className="px-4 py-2.5">
+          <ChevronDown
+            className={cn(
+              "size-4 text-muted-foreground transition-transform",
+              expanded && "rotate-180",
+            )}
+          />
+        </td>
+      </tr>
 
       {expanded && (
-        <div className="space-y-2 border-t bg-muted/30 px-4 py-3 text-sm">
-          {flip.inputs.map((line) => (
-            <div key={line.id} className="flex items-baseline justify-between gap-4">
+        <tr className="border-b bg-muted/30">
+          <td colSpan={6} className="space-y-2 px-4 py-3 text-sm">
+            {flip.inputs.map((line) => (
+              <div key={line.id} className="flex items-baseline justify-between gap-4">
+                <span className="text-muted-foreground">
+                  {formatQuantity(line.qty)}x {prettifyId(line.id)}
+                  {line.note && <span className="ml-2 text-xs">{line.note}</span>}
+                </span>
+                <span className="tabular" title={formatExact(line.total)}>
+                  {formatCoins(line.total)}
+                </span>
+              </div>
+            ))}
+
+            <div className="flex items-baseline justify-between gap-4 border-t pt-2">
+              <span className="text-muted-foreground">Materials</span>
+              <span className="tabular">{formatCoins(flip.materialCost)}</span>
+            </div>
+            <div className="flex items-baseline justify-between gap-4">
               <span className="text-muted-foreground">
-                {formatQuantity(line.qty)}x {prettifyId(line.id)}
-                {line.note && <span className="ml-2 text-xs">{line.note}</span>}
+                Sale, gross {flip.saleSource === "auction" ? "(AH lowest BIN)" : "(bazaar)"}
               </span>
-              <span className="tabular" title={formatExact(line.total)}>
-                {formatCoins(line.total)}
-              </span>
+              <span className="tabular">{formatCoins(flip.saleGross)}</span>
             </div>
-          ))}
-
-          <div className="flex items-baseline justify-between gap-4 border-t pt-2">
-            <span className="text-muted-foreground">Materials</span>
-            <span className="tabular">{formatCoins(flip.materialCost)}</span>
-          </div>
-          <div className="flex items-baseline justify-between gap-4">
-            <span className="text-muted-foreground">
-              Sale, gross {flip.saleSource === "auction" ? "(AH lowest BIN)" : "(bazaar)"}
-            </span>
-            <span className="tabular">{formatCoins(flip.saleGross)}</span>
-          </div>
-          <div className="flex items-baseline justify-between gap-4">
-            <span className="text-muted-foreground">After tax</span>
-            <span className="tabular">{formatCoins(flip.saleNet)}</span>
-          </div>
-
-          {/*
-            Both bazaar prices, always. A product whose sell offer is orders of
-            magnitude above its instasell has an empty buy-order book, and
-            seeing the two side by side is the only way to catch that before
-            trusting either number.
-          */}
-          {flip.saleSource === "bazaar" && (
-            <div className="flex items-baseline justify-between gap-4 text-xs text-muted-foreground">
-              <span>Bazaar book</span>
-              <span className="tabular">
-                sell offer {formatCoins(flip.bazaarAlternative.offer)} · instant{" "}
-                {formatCoins(flip.bazaarAlternative.instant)}
-              </span>
+            <div className="flex items-baseline justify-between gap-4">
+              <span className="text-muted-foreground">After tax</span>
+              <span className="tabular">{formatCoins(flip.saleNet)}</span>
             </div>
-          )}
-        </div>
+
+            {/*
+              Both bazaar prices, always. A product whose sell offer is orders of
+              magnitude above its instasell has an empty buy-order book, and
+              seeing the two side by side is the only way to catch that before
+              trusting either number.
+            */}
+            {flip.saleSource === "bazaar" && (
+              <div className="flex items-baseline justify-between gap-4 text-xs text-muted-foreground">
+                <span>Bazaar book</span>
+                <span className="tabular">
+                  sell offer {formatCoins(flip.bazaarAlternative.offer)} · instant{" "}
+                  {formatCoins(flip.bazaarAlternative.instant)}
+                </span>
+              </div>
+            )}
+          </td>
+        </tr>
       )}
-    </div>
+    </>
   )
 }

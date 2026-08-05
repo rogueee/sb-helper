@@ -60,21 +60,27 @@ describe("applyFiltersAndSort", () => {
   })
 
   it("filters by rarity", () => {
-    const filters = { rarities: new Set(["LEGENDARY"]), stars: new Set<number>() }
+    const filters = { rarities: new Set(["LEGENDARY"]), stars: new Set<number>(), priceRange: null }
     const out = applyFiltersAndSort(rows, filters, [{ key: "price", direction: "asc" }])
     expect(ids(out)).toEqual(["c", "a"])
   })
 
   it("filters by star count, treating 0 stars as a real choice", () => {
-    const filters = { rarities: new Set<string>(), stars: new Set([0]) }
+    const filters = { rarities: new Set<string>(), stars: new Set([0]), priceRange: null }
     const out = applyFiltersAndSort(rows, filters, [{ key: "price", direction: "asc" }])
     expect(ids(out)).toEqual(["b", "c"])
   })
 
   it("combines rarity and star filters as an intersection", () => {
-    const filters = { rarities: new Set(["LEGENDARY"]), stars: new Set([0]) }
+    const filters = { rarities: new Set(["LEGENDARY"]), stars: new Set([0]), priceRange: null }
     const out = applyFiltersAndSort(rows, filters, [{ key: "price", direction: "asc" }])
     expect(ids(out)).toEqual(["c"])
+  })
+
+  it("filters by price range, inclusive of both bounds", () => {
+    const filters = { rarities: new Set<string>(), stars: new Set<number>(), priceRange: { min: 300, max: 400 } }
+    const out = applyFiltersAndSort(rows, filters, [{ key: "price", direction: "asc" }])
+    expect(ids(out)).toEqual(["b", "c"])
   })
 
   it("returns everything when no filter is set", () => {

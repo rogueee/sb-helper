@@ -137,24 +137,30 @@ export function BazaarFlips() {
           No products clear a positive margin at this volume floor.
         </p>
       ) : (
-        <div className="rounded-lg border">
-          <div className="grid grid-cols-[2rem_1fr_auto_auto_auto_auto_auto] items-center gap-4 border-b px-4 py-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-            <span />
-            <span>Product</span>
-            <span className="text-right">Buy order</span>
-            <span className="text-right">Sell offer</span>
-            <span className="text-right">Margin</span>
-            <span className="text-right">Units / hr</span>
-            <span className="text-right">Flow / hr</span>
-          </div>
-          {visible.map((flip) => (
-            <FlipRow
-              key={flip.productId}
-              flip={flip}
-              pinned={isPinned(flip.productId)}
-              onPin={() => toggle(flip.productId)}
-            />
-          ))}
+        <div className="overflow-x-auto rounded-lg border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                <th className="w-10 px-4 py-2" />
+                <th className="px-2 py-2 text-left font-medium">Product</th>
+                <th className="px-2 py-2 text-right font-medium">Buy order</th>
+                <th className="px-2 py-2 text-right font-medium">Sell offer</th>
+                <th className="px-2 py-2 text-right font-medium">Margin</th>
+                <th className="px-2 py-2 text-right font-medium">Units / hr</th>
+                <th className="px-4 py-2 text-right font-medium">Flow / hr</th>
+              </tr>
+            </thead>
+            <tbody>
+              {visible.map((flip) => (
+                <FlipRow
+                  key={flip.productId}
+                  flip={flip}
+                  pinned={isPinned(flip.productId)}
+                  onPin={() => toggle(flip.productId)}
+                />
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
 
@@ -178,43 +184,57 @@ function FlipRow({
   onPin: () => void
 }) {
   return (
-    <div className="grid grid-cols-[2rem_1fr_auto_auto_auto_auto_auto] items-center gap-4 border-b px-4 py-2.5 text-sm last:border-b-0 hover:bg-accent/50">
-      <button
-        type="button"
-        onClick={onPin}
-        title={pinned ? "Unpin" : "Pin to the top"}
-        className="text-muted-foreground transition-colors hover:text-foreground"
+    <tr className="border-b text-sm last:border-b-0 hover:bg-accent/50">
+      <td className="px-4 py-2.5">
+        <button
+          type="button"
+          onClick={onPin}
+          title={pinned ? "Unpin" : "Pin to the top"}
+          className="text-muted-foreground transition-colors hover:text-foreground"
+        >
+          {pinned ? (
+            <Pin className="size-3.5 fill-current" />
+          ) : (
+            <PinOff className="size-3.5 opacity-40" />
+          )}
+        </button>
+      </td>
+
+      <td className={cn("w-full max-w-0 truncate px-2 py-2.5", pinned && "font-medium")}>
+        {flip.name}
+      </td>
+
+      <td
+        className="px-2 py-2.5 text-right tabular text-muted-foreground"
+        title={formatExact(flip.buyOrderPrice)}
       >
-        {pinned ? <Pin className="size-3.5 fill-current" /> : <PinOff className="size-3.5 opacity-40" />}
-      </button>
-
-      <span className={cn("truncate", pinned && "font-medium")}>{flip.name}</span>
-
-      <span className="text-right tabular text-muted-foreground" title={formatExact(flip.buyOrderPrice)}>
         {formatCoins(flip.buyOrderPrice)}
-      </span>
-      <span className="text-right tabular text-muted-foreground" title={formatExact(flip.sellOfferPrice)}>
+      </td>
+      <td
+        className="px-2 py-2.5 text-right tabular text-muted-foreground"
+        title={formatExact(flip.sellOfferPrice)}
+      >
         {formatCoins(flip.sellOfferPrice)}
-      </span>
-      <span className="text-right tabular text-gain" title={formatExact(flip.margin)}>
+      </td>
+      <td className="px-2 py-2.5 text-right tabular text-gain" title={formatExact(flip.margin)}>
         {formatCoins(flip.margin)}
         {/* Parenthesised: without it "398" and "32.4%" read as one number. */}
         <span className="ml-1.5 text-xs text-muted-foreground">
           ({(flip.marginPct * 100).toFixed(1)}%)
         </span>
-      </span>
-      <span
-        className="text-right tabular text-muted-foreground"
+      </td>
+      <td
+        className="px-2 py-2.5 text-right tabular text-muted-foreground"
         title={`${formatQuantity(flip.buyVolumeWeek)} bought / ${formatQuantity(flip.sellVolumeWeek)} sold per week`}
       >
         {formatQuantity(Math.round(flip.unitsPerHour))}
-      </span>
-      <span
-        className="text-right tabular"
+      </td>
+      <td
+        className="px-4 py-2.5 text-right tabular"
         title="Margin x the whole market's hourly flow — an upper bound, not your throughput"
       >
         {formatCoins(flip.marketProfitPerHour)}
-      </span>
-    </div>
+      </td>
+    </tr>
   )
 }

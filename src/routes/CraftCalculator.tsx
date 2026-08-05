@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
-import { ChevronDown, ExternalLink, Loader2 } from "lucide-react"
+import { Check, ChevronDown, Clock, Copy, Loader2, X } from "lucide-react"
 import { ItemSearch, type SearchableItem } from "@/components/ItemSearch"
 import { CostBreakdown } from "@/components/CostBreakdown"
 import { Badge } from "@/components/ui/badge"
@@ -14,12 +14,15 @@ import {
   DEFAULT_SORT,
   EMPTY_FILTERS,
   type ListingFilterState,
+  type PriceRange,
   type PricedListing,
   type SortChain,
 } from "@/lib/listings"
 import { rarityColorClass, rarityLabel, sortRarities } from "@/lib/rarity"
-import { formatCoins, formatExact, formatSigned } from "@/lib/format"
-import { cn } from "@/lib/utils"
+import { formatCoins, formatExact, formatRelativeTime, formatSigned } from "@/lib/format"
+import { resolvePlayerName } from "@/lib/mojang"
+import { useLocalStorage } from "@/lib/useLocalStorage"
+import { cn, onActivateKey } from "@/lib/utils"
 
 /**
  * Cheapest way to obtain the unmodified item: its Bazaar price if it trades
@@ -48,6 +51,15 @@ function findBaseCost(
   return Math.min(bazaarPrice, cheapestClean)
 }
 
+interface HistoryEntry {
+  id: string
+  name: string
+  searchedAt: number
+}
+
+/** Most-recent-first, one entry per item, capped so the card grid stays a glance. */
+const MAX_HISTORY = 12
+
 export function CraftCalculator() {
   const { data: bazaar } = useBazaar()
   const { data: itemMap, items } = useItemMap()
@@ -61,6 +73,7 @@ export function CraftCalculator() {
   const [searching, setSearching] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [history, setHistory] = useLocalStorage<HistoryEntry[]>("craftvsbuy:history", [])
 
   const searchable = useMemo<SearchableItem[]>(
     () => (items ?? []).map((i) => ({ id: i.id, name: i.name })),
@@ -127,6 +140,20 @@ export function CraftCalculator() {
     setResults(null)
   }, [selected])
 
+  // Every completed selection joins the history, most recent first. Re-picking
+  // an item already in it just bumps it back to the front rather than
+  // duplicating the card.
+  useEffect(() => {
+    if (!selected) return
+    setHistory((prev) => {
+      const rest = prev.filter((h) => h.id !== selected.id)
+      return [{ id: selected.id, name: selected.name, searchedAt: Date.now() }, ...rest].slice(
+        0,
+        MAX_HISTORY,
+      )
+    })
+  }, [selected, setHistory])
+
   const visible = useMemo(
     () => (results ? applyFiltersAndSort(results, filters, sort) : null),
     [results, filters, sort],
@@ -140,6 +167,19 @@ export function CraftCalculator() {
     () => (results ? [...new Set(results.map((p) => p.stars))].sort((a, b) => a - b) : []),
     [results],
   )
+  // Bounds for the price slider come from the whole result set, not the
+  // filtered view — otherwise narrowing the range would shrink the range
+  // control's own span.
+  const priceBounds = useMemo<PriceRange | null>(() => {
+    if (!results || results.length === 0) return null
+    let min = Infinity
+    let max = -Infinity
+    for (const p of results) {
+      if (p.listing.price < min) min = p.listing.price
+      if (p.listing.price > max) max = p.listing.price
+    }
+    return { min, max }
+  }, [results])
 
   // The summary describes the cheapest listing overall, independent of sort
   // order, so it stays a stable reference point while you re-sort.
@@ -178,6 +218,25 @@ export function CraftCalculator() {
             autoFocus
           />
 
+          {history.length > 0 && (
+            <section className="space-y-3">
+              <h2 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                Recent searches
+              </h2>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {history.map((entry) => (
+                  <HistoryCard
+                    key={entry.id}
+                    entry={entry}
+                    active={selected?.id === entry.id}
+                    onOpen={() => setSelected({ id: entry.id, name: entry.name })}
+                    onRemove={() => setHistory((prev) => prev.filter((h) => h.id !== entry.id))}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+
           {/*
             Only take over the view on a first search. The Bazaar refetches on a
             timer, which re-prices everything — unmounting the table for that
@@ -208,6 +267,7 @@ export function CraftCalculator() {
                   <ListingFilters
                     availableRarities={availableRarities}
                     availableStars={availableStars}
+                    priceBounds={priceBounds}
                     filters={filters}
                     onFiltersChange={setFilters}
                     sort={sort}
@@ -222,25 +282,31 @@ export function CraftCalculator() {
                       No listings match these filters.
                     </p>
                   ) : (
-                  <div className="rounded-lg border">
-                    <div className="grid grid-cols-[1fr_auto_auto_auto_2rem] items-center gap-4 border-b px-4 py-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                      <span>Listing</span>
-                      <span className="text-right">Price</span>
-                      <span className="text-right">Craft cost</span>
-                      <span className="text-right">Spread</span>
-                      <span />
+                    <div className="overflow-x-auto rounded-lg border">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                            <th className="px-4 py-2 text-left font-medium">Listing</th>
+                            <th className="px-2 py-2 text-right font-medium">Price</th>
+                            <th className="px-2 py-2 text-right font-medium">Craft cost</th>
+                            <th className="px-2 py-2 text-right font-medium">Spread</th>
+                            <th className="w-8 px-4 py-2" />
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {visible.map((p) => (
+                            <ListingRow
+                              key={p.listing.uuid}
+                              priced={p}
+                              expanded={expanded === p.listing.uuid}
+                              onToggle={() =>
+                                setExpanded(expanded === p.listing.uuid ? null : p.listing.uuid)
+                              }
+                            />
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
-                    {visible.map((p) => (
-                      <ListingRow
-                        key={p.listing.uuid}
-                        priced={p}
-                        expanded={expanded === p.listing.uuid}
-                        onToggle={() =>
-                          setExpanded(expanded === p.listing.uuid ? null : p.listing.uuid)
-                        }
-                      />
-                    ))}
-                  </div>
                   )}
                 </>
               )}
@@ -248,6 +314,44 @@ export function CraftCalculator() {
           )}
         </>
       )}
+    </div>
+  )
+}
+
+function HistoryCard({
+  entry,
+  active,
+  onOpen,
+  onRemove,
+}: {
+  entry: HistoryEntry
+  active: boolean
+  onOpen: () => void
+  onRemove: () => void
+}) {
+  return (
+    <div
+      className={cn(
+        "group relative rounded-lg border p-4 transition-colors",
+        active && "border-foreground/40 bg-accent/40",
+      )}
+    >
+      <button
+        type="button"
+        onClick={onRemove}
+        aria-label={`Remove ${entry.name} from history`}
+        className="absolute right-2 top-2 rounded p-1 text-muted-foreground opacity-0 transition-opacity hover:bg-accent group-hover:opacity-100"
+      >
+        <X className="size-3.5" />
+      </button>
+
+      <button type="button" onClick={onOpen} className="w-full text-left">
+        <div className="truncate pr-6 text-sm font-medium">{entry.name}</div>
+        <div className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
+          <Clock className="size-3" />
+          {formatRelativeTime(entry.searchedAt)}
+        </div>
+      </button>
     </div>
   )
 }
@@ -315,26 +419,62 @@ function Stat({
 }
 
 /**
- * Link out to everything else the seller has up.
+ * Copy an in-game `/ah <name>` command for the seller.
  *
- * Hypixel has no web auction house, so this goes to sky.coflnet.com, which
- * indexes live auctions by player. It sits inside the expanded panel rather
- * than on the row because the row is itself a button, and a link nested in a
- * button is both invalid markup and impossible to click without toggling.
+ * Hypixel has no web auction house and its API only ever gives up the
+ * seller's player UUID, never a name — but `/ah` takes a name. The UUID is
+ * resolved through playerdb.co (a CORS-friendly Mojang proxy) on demand, since
+ * resolving every listing up front would mean one lookup per row for a link
+ * most of them will never expand.
  */
-function SellerLink({ auctioneer }: { auctioneer: string | undefined }) {
+function SellerCommand({ auctioneer }: { auctioneer: string | undefined }) {
+  const [name, setName] = useState<string | null>(null)
+  const [failed, setFailed] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    if (!auctioneer) return
+    let cancelled = false
+    setName(null)
+    setFailed(false)
+
+    resolvePlayerName(auctioneer).then((resolved) => {
+      if (cancelled) return
+      if (resolved) setName(resolved)
+      else setFailed(true)
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [auctioneer])
+
   if (!auctioneer) return null
 
+  const command = name ? `/ah ${name}` : null
+
+  async function copy() {
+    if (!command) return
+    try {
+      await navigator.clipboard.writeText(command)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    } catch {
+      // Clipboard permission denied — nothing more to offer here.
+    }
+  }
+
   return (
-    <a
-      href={`https://sky.coflnet.com/player/${auctioneer}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="mt-3 inline-flex items-center gap-1.5 text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+    <button
+      type="button"
+      onClick={copy}
+      disabled={!command}
+      title={command ? "Copy — paste in-game to view this seller's listings" : undefined}
+      className="mt-3 inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:cursor-default disabled:opacity-60"
     >
-      <ExternalLink className="size-3" />
-      Seller's other listings
-    </a>
+      {copied ? <Check className="size-3" /> : <Copy className="size-3" />}
+      {command ?? (failed ? "Seller lookup failed" : "Resolving seller…")}
+    </button>
   )
 }
 
@@ -352,62 +492,73 @@ function ListingRow({
   const isDeal = spread !== null && spread < 0
 
   return (
-    <div className="border-b last:border-b-0">
-      <button
-        type="button"
+    <>
+      <tr
+        role="button"
+        tabIndex={0}
         onClick={onToggle}
-        className="grid w-full grid-cols-[1fr_auto_auto_auto_2rem] items-center gap-4 px-4 py-2.5 text-left text-sm hover:bg-accent/50"
+        onKeyDown={onActivateKey(onToggle)}
+        className="cursor-pointer border-b text-sm hover:bg-accent/50"
       >
-        <span className="flex items-center gap-2 truncate">
-          {/*
-            The item name carries the rarity colour rather than a separate
-            swatch — it is how the AH itself presents rarity, so it reads
-            without a legend.
-          */}
-          <span className={cn("truncate font-medium", rarityColorClass(priced.tier))}>
-            {listing.name}
+        <td className="w-full max-w-0 px-4 py-2.5">
+          <span className="flex items-center gap-2 truncate">
+            {/*
+              The item name carries the rarity colour rather than a separate
+              swatch — it is how the AH itself presents rarity, so it reads
+              without a legend.
+            */}
+            <span className={cn("truncate font-medium", rarityColorClass(priced.tier))}>
+              {listing.name}
+            </span>
+            <span
+              className="shrink-0 text-xs text-muted-foreground"
+              title={rarityLabel(priced.tier)}
+            >
+              {rarityLabel(priced.tier)}
+            </span>
+            {valuation.unpriced.length > 0 && (
+              <Badge variant="outline" className="shrink-0">
+                +{valuation.unpriced.length} unpriced
+              </Badge>
+            )}
           </span>
-          <span className="shrink-0 text-xs text-muted-foreground" title={rarityLabel(priced.tier)}>
-            {rarityLabel(priced.tier)}
-          </span>
-          {valuation.unpriced.length > 0 && (
-            <Badge variant="outline" className="shrink-0">
-              +{valuation.unpriced.length} unpriced
-            </Badge>
-          )}
-        </span>
-        <span className="text-right tabular" title={formatExact(listing.price)}>
+        </td>
+        <td className="px-2 py-2.5 text-right tabular" title={formatExact(listing.price)}>
           {formatCoins(listing.price)}
-        </span>
-        <span
-          className="text-right tabular text-muted-foreground"
+        </td>
+        <td
+          className="px-2 py-2.5 text-right tabular text-muted-foreground"
           title={formatExact(craftCost)}
         >
           {formatCoins(craftCost)}
-        </span>
-        <span
+        </td>
+        <td
           className={cn(
-            "text-right tabular",
+            "px-2 py-2.5 text-right tabular",
             spread === null ? "text-muted-foreground" : isDeal ? "text-gain" : "text-loss",
           )}
           title={formatExact(spread)}
         >
           {formatSigned(spread)}
-        </span>
-        <ChevronDown
-          className={cn(
-            "size-4 text-muted-foreground transition-transform",
-            expanded && "rotate-180",
-          )}
-        />
-      </button>
+        </td>
+        <td className="px-4 py-2.5">
+          <ChevronDown
+            className={cn(
+              "size-4 text-muted-foreground transition-transform",
+              expanded && "rotate-180",
+            )}
+          />
+        </td>
+      </tr>
 
       {expanded && (
-        <div className="border-t bg-muted/30 px-4 pb-4">
-          <CostBreakdown valuation={valuation} />
-          <SellerLink auctioneer={listing.auctioneer} />
-        </div>
+        <tr className="border-b bg-muted/30">
+          <td colSpan={5} className="px-4 pb-4">
+            <CostBreakdown valuation={valuation} />
+            <SellerCommand auctioneer={listing.auctioneer} />
+          </td>
+        </tr>
       )}
-    </div>
+    </>
   )
 }
