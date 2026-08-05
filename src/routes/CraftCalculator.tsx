@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
-import { Check, ChevronDown, Clock, Copy, Loader2, X } from "lucide-react"
+import { Check, ChevronDown, Clock, Copy, Loader2, RefreshCw, X } from "lucide-react"
 import { ItemSearch, type SearchableItem } from "@/components/ItemSearch"
 import { CostBreakdown } from "@/components/CostBreakdown"
 import { Badge } from "@/components/ui/badge"
@@ -421,16 +421,18 @@ function Stat({
 /**
  * Copy an in-game `/ah <name>` command for the seller.
  *
- * Hypixel has no web auction house and its API only ever gives up the
- * seller's player UUID, never a name — but `/ah` takes a name. The UUID is
- * resolved through playerdb.co (a CORS-friendly Mojang proxy) on demand, since
- * resolving every listing up front would mean one lookup per row for a link
- * most of them will never expand.
+ * Hypixel has no web auction house and its API only ever gives up the seller's
+ * player UUID, never a name — but `/ah` takes a name. Resolution happens on
+ * expand rather than for every row, since most rows are never opened.
+ *
+ * A failed lookup stays retryable: the proxies are third-party and a miss is
+ * usually transient, so the button turns into a retry rather than a dead end.
  */
 function SellerCommand({ auctioneer }: { auctioneer: string | undefined }) {
   const [name, setName] = useState<string | null>(null)
   const [failed, setFailed] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [attempt, setAttempt] = useState(0)
 
   useEffect(() => {
     if (!auctioneer) return
@@ -447,14 +449,17 @@ function SellerCommand({ auctioneer }: { auctioneer: string | undefined }) {
     return () => {
       cancelled = true
     }
-  }, [auctioneer])
+  }, [auctioneer, attempt])
 
   if (!auctioneer) return null
 
   const command = name ? `/ah ${name}` : null
 
   async function copy() {
-    if (!command) return
+    if (!command) {
+      if (failed) setAttempt((n) => n + 1)
+      return
+    }
     try {
       await navigator.clipboard.writeText(command)
       setCopied(true)
@@ -468,12 +473,24 @@ function SellerCommand({ auctioneer }: { auctioneer: string | undefined }) {
     <button
       type="button"
       onClick={copy}
-      disabled={!command}
-      title={command ? "Copy — paste in-game to view this seller's listings" : undefined}
+      disabled={!command && !failed}
+      title={
+        command
+          ? "Copy — paste in-game to view this seller's listings"
+          : failed
+            ? "Look up this seller's name again"
+            : undefined
+      }
       className="mt-3 inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:cursor-default disabled:opacity-60"
     >
-      {copied ? <Check className="size-3" /> : <Copy className="size-3" />}
-      {command ?? (failed ? "Seller lookup failed" : "Resolving seller…")}
+      {copied ? (
+        <Check className="size-3" />
+      ) : failed ? (
+        <RefreshCw className="size-3" />
+      ) : (
+        <Copy className="size-3" />
+      )}
+      {command ?? (failed ? "Seller lookup failed — retry" : "Resolving seller…")}
     </button>
   )
 }

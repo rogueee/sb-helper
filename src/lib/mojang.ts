@@ -1,23 +1,50 @@
 /**
  * UUID -> IGN resolution for auction sellers.
  *
- * The Hypixel auction API only ever gives up the seller's player UUID, never
- * a name — but the in-game AH search (`/ah <name>`) takes a name, not a UUID.
- * playerdb.co proxies Mojang's session server with CORS enabled, which
- * Mojang's own endpoints are not, so it is the one that can be called
- * directly from the browser. Names are cached in IndexedDB since a UUID's
- * name essentially never changes.
+ * The Hypixel auction API only ever gives up the seller's player UUID, never a
+ * name — but the in-game AH search (`/ah <name>`) takes a name. Mojang's own
+ * session server sends no CORS headers, so the browser cannot call it directly
+ * and a proxy is required.
+ *
+ * crafthead.net is the primary: it is Cloudflare-backed and built to serve skin
+ * lookups at volume, and 150 concurrent lookups return 150 successes. playerdb
+ * starts returning 429 (`retry-after: 10`) at roughly a third of that, which is
+ * what made seller names intermittently fail — so it is now only the fallback.
+ * api.ashcon.app is deliberately not used: it served a name two renames stale
+ * for a UUID the other three agreed on.
  */
 import { idbGet, idbSet } from "./idb"
 
-const NAME_TTL_MS = 30 * 24 * 60 * 60 * 1000
+/**
+ * Names are cached for a day rather than a month. A renamed seller yields an
+ * `/ah` command that silently finds nobody in game, and there is no way to tell
+ * from the client that it has gone stale — a day bounds how long that can last
+ * while still sparing the vast majority of lookups.
+ */
+const NAME_TTL_MS = 24 * 60 * 60 * 1000
 
-interface PlayerDbResponse {
-  success: boolean
-  data?: { player?: { username?: string } }
-}
+/** Endpoints in priority order; both are CORS-enabled and return `{ name }`. */
+const SOURCES = [
+  (uuid: string) => `https://crafthead.net/profile/${uuid}`,
+  (uuid: string) => `https://api.minetools.eu/uuid/${uuid}`,
+]
 
 const inflight = new Map<string, Promise<string | null>>()
+
+async function fetchName(uuid: string): Promise<string | null> {
+  for (const source of SOURCES) {
+    try {
+      const res = await fetch(source(uuid))
+      if (!res.ok) continue
+      const json: { name?: string } = await res.json()
+      // minetools reports a miss as `{ status: "ERR", ... }` with no name.
+      if (json.name) return json.name
+    } catch {
+      // Network failure on one source is not a reason to skip the next.
+    }
+  }
+  return null
+}
 
 export async function resolvePlayerName(uuid: string): Promise<string | null> {
   const cacheKey = `player-name:${uuid}`
@@ -29,15 +56,11 @@ export async function resolvePlayerName(uuid: string): Promise<string | null> {
 
   const promise = (async () => {
     try {
-      const res = await fetch(`https://playerdb.co/api/player/minecraft/${uuid}`)
-      if (!res.ok) return null
-      const json: PlayerDbResponse = await res.json()
-      const name = json.data?.player?.username
-      if (!name) return null
-      await idbSet(cacheKey, name)
+      const name = await fetchName(uuid)
+      // Only a hit is cached. Caching a miss would pin a transient outage or
+      // rate-limit into place for the whole TTL.
+      if (name) await idbSet(cacheKey, name)
       return name
-    } catch {
-      return null
     } finally {
       inflight.delete(uuid)
     }
